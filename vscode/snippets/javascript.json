@@ -1,0 +1,42 @@
+{
+	 // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+  , "describe": {
+    "prefix": "describe",
+    "body": [
+      "describe('$1', () => {",
+      "  it('$2', () => {",
+      "  });",
+      "});"
+    ]
+  }
+  , "it": {
+    "prefix": "it",
+    "body": [
+      "it('$1', () => {",
+      "});"
+    ]
+  }
+  , "expect.toEqual": {
+    "prefix": "expect",
+    "body":[
+      "expect($1).to.equal($2);"
+    ]
+  }
+  , "expect.toDeepEqual": {
+    "prefix": "expect",
+    "body":[
+      "expect($1).to.deep.equal($2);"
+    ]
+  }
+}
