@@ -2,6 +2,6 @@
 	name = sisisin
 	email = azsisisin@gmail.com
 [core]
-	excludesfile = /Users/sisisin-mbp/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [alias]
 	unstg = reset HEAD
