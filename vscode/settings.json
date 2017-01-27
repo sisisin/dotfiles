@@ -1,8 +1,18 @@
-// Place your settings in this file to overwrite the default settings
 {
-		"editor.tabSize": 2,
-		"editor.insertSpaces": true,
-    "editor.fontFamily": "Ricty",
-    "editor.fontSize": 15,
-    "editor.wrappingColumn": 0
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.fontSize": 15,
+  "editor.fontFamily": "Ricty",
+  "editor.wrappingColumn": 0,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "target/": false,
+    ".tmp/": false
+  },
+  "editor.formatOnSave": false,
+  "workbench.sideBar.location": "right",
+  "background.enabled": false,
+  "window.zoomLevel": 0
 }
