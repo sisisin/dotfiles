@@ -13,6 +13,8 @@ alias jxa='osascript -l JavaScript'
 alias rm='rm -i'
 alias df='df -h'
 alias ls='ls -CF'
+alias wdiff="git diff --no-index --word-diff-regex='\\w+|[^[:space:]]'"
+alias srv="python -m SimpleHTTPServer"
 
 # ----------------------
 # Git Aliases
@@ -22,6 +24,7 @@ alias gaa='git add .'
 alias gaaa='git add -A'
 alias gb='git branch'
 alias gbd='git branch -d '
+alias gbdm=`git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %`
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gco='git checkout'
@@ -30,6 +33,7 @@ alias gcom='git checkout master'
 alias gcosb='git checkout `git branch | peco`'
 alias gd='git diff'
 alias gda='git diff HEAD'
+alias gdn='git diff --name-only master'
 alias gi='git init'
 alias gl='git log'
 alias glg='git log --graph --oneline --decorate --all'
@@ -47,3 +51,10 @@ alias gstd='git stash drop'
 # ----------------------
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
+
+# ----------------------
+# hub Aliases
+# ----------------------
+alias hpr='hub pull-request'
+alias hbr='hub browse'
+

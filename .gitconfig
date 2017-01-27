@@ -5,3 +5,7 @@
 	excludesfile = ~/.gitignore_global
 [alias]
 	unstg = reset HEAD
+[push]
+	default = current
+[gg]
+	username = sisisin
