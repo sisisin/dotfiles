@@ -1,0 +1,5 @@
+.bash_profile_optional
+_env_vars_optional.sh
+files/.aws/credentials
+files/.ssh/config
+.tmux/resurrect

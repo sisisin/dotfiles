@@ -1,0 +1,100 @@
+{
+  "background.enabled": false,
+  "editor.autoIndent": true,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "editor.detectIndentation": false,
+  "editor.fontSize": 15,
+  "editor.fontFamily": "Ricty",
+  "editor.formatOnPaste": false,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.renderIndentGuides": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "files.autoGuessEncoding": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "src/main/js": true,
+    "target/": false,
+    ".tmp/": true,
+    "coverage": true
+  },
+  "git.enableSmartCommit": true,
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "gitlens.keymap": "chorded",
+  "gitlens.historyExplorer.enabled": true,
+  "prettier.printWidth": 180,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.proseWrap": "always",
+  "window.title": "${activeEditorMedium}${separator}${folderName}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.sideBar.location": "left",
+  "[csharp]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[shellscript]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "breadcrumbs.enabled": true,
+  "tslint.autoFixOnSave": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "bracketPairColorizer.consecutivePairColors": ["()", "[]", "{}", ["Black", "Orchid", "LightSkyBlue"], "Red"],
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.list.keyboardNavigation": "simple",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "macros": {
+    "createPackageListFromPackageJsonDependencies": ["editor.action.clipboardCopyAction"]
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "rebornix.ruby"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", { "language": "typescript", "autoFix": true }, { "language": "typescriptreact", "autoFix": true }],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
