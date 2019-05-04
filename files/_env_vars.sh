@@ -8,10 +8,11 @@ export ASPNETCORE_ENVIRONMENT=Development
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/Dropbox/Apps/scansnap-saver"
+export DOTFILES_PATH="$HOME/Dropbox/dotfiles"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -23,13 +24,13 @@ eval "$(rbenv init -)"
 
 eval "$(direnv hook zsh)"
 show_virtual_env() {
-  if [ -n "$VIRTUAL_ENV" ]; then
-    echo "($(basename $VIRTUAL_ENV))"
-  fi
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "($(basename $VIRTUAL_ENV))"
+    fi
 }
 PS1='$(show_virtual_env)'$PS1
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 
 alias jxa='osascript -l JavaScript'
@@ -40,6 +41,8 @@ alias ll='ls -l'
 alias wdiff="git diff --no-index --word-diff-regex='\\w+|[^[:space:]]'"
 alias srv="python -m SimpleHTTPServer"
 alias reload="exec $SHELL -l"
+alias cdd="cd $(echo $DOTFILES_PATH)"
+alias coded="code $(echo $DOTFILES_PATH)"
 
 # ----------------------
 # Git Aliases
@@ -49,7 +52,7 @@ alias gbd='git branch -d '
 alias gbds='git branch -D `git branch | peco`'
 
 function gbdm() {
-  git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
+    git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
 }
 
 alias gc='git commit --no-verify'
@@ -101,16 +104,14 @@ alias hbr='hub browse'
 
 # background image changer
 
-function set_image_lists(){
+function set_image_lists() {
     local image_index=1
-    find "$HOME/Dropbox/picture/background" -name "*.png"  -o -name "*.jpg" -o -name "*.gif" | while read f
-    do
+    find "$HOME/Dropbox/picture/background" -name "*.png" -o -name "*.jpg" -o -name "*.gif" | while read f; do
         image_list1[image_index]="$f"
-        image_index=$(( $image_index + 1 ))
+        image_index=$(($image_index + 1))
     done
 }
 set_image_lists
-
 
 image_index=1
 bg() {
@@ -118,7 +119,7 @@ bg() {
         if test $image_index -eq ${#image_list1[@]}; then
             image_index=1
         else
-            image_index=$(( $image_index + 1 ))
+            image_index=$(($image_index + 1))
         fi
         image_path=$image_list1[$image_index]
         osascript ~/set_background_image.applescript $image_path
@@ -129,6 +130,5 @@ bg() {
 }
 zle -N bg
 bindkey '^m' bg
-
 
 [[ -f ~/_env_vars_optional.sh ]] && source ~/_env_vars_optional.sh

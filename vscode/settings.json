@@ -1,25 +1,67 @@
 {
+  "[csharp]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "mbessey.vscode-rufo"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.tabSize": 4
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "background.enabled": false,
-  "editor.autoIndent": true,
+  "bracketPairColorizer.consecutivePairColors": ["()", "[]", "{}", ["Black", "Orchid", "LightSkyBlue"], "Red"],
+  "breadcrumbs.enabled": true,
   "diffEditor.ignoreTrimWhitespace": true,
+  "editor.autoIndent": true,
   "editor.detectIndentation": false,
-  "editor.fontSize": 15,
   "editor.fontFamily": "Ricty",
+  "editor.fontSize": 15,
   "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "autoFix": true,
+      "language": "typescript"
+    },
+    {
+      "autoFix": true,
+      "language": "typescriptreact"
+    }
+  ],
   "files.autoGuessEncoding": false,
   "files.exclude": {
-    "**/.git": true,
     "**/.DS_Store": true,
-    "src/main/js": true,
-    "target/": false,
+    "**/.git": true,
     ".tmp/": true,
-    "coverage": true
+    "coverage": true,
+    "src/main/js": true,
+    "target/": false
   },
   "git.enableSmartCommit": true,
   "gitlens.advanced.messages": {
@@ -35,66 +77,31 @@
     "suppressWelcomeNotice": true
   },
   "gitlens.keymap": "chorded",
-  "gitlens.historyExplorer.enabled": true,
-  "prettier.printWidth": 180,
-  "prettier.tabWidth": 2,
-  "prettier.useTabs": false,
-  "prettier.semi": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
-  "prettier.bracketSpacing": true,
-  "prettier.arrowParens": "avoid",
-  "prettier.proseWrap": "always",
-  "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Visual Studio Light",
-  "workbench.iconTheme": "vs-seti",
-  "workbench.sideBar.location": "left",
-  "[csharp]": {
-    "editor.tabSize": 4,
-    "editor.insertSpaces": true
-  },
-  "[javascript]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[shellscript]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[typescript]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true
-  },
-  "breadcrumbs.enabled": true,
-  "tslint.autoFixOnSave": true,
-  "editor.multiCursorModifier": "ctrlCmd",
-  "bracketPairColorizer.consecutivePairColors": ["()", "[]", "{}", ["Black", "Orchid", "LightSkyBlue"], "Red"],
   "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "workbench.list.keyboardNavigation": "simple",
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
   "macros": {
     "createPackageListFromPackageJsonDependencies": ["editor.action.clipboardCopyAction"]
   },
-  "[ruby]": {
-    "editor.defaultFormatter": "rebornix.ruby"
-  },
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint.validate": ["javascript", "javascriptreact", { "language": "typescript", "autoFix": true }, { "language": "typescriptreact", "autoFix": true }],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "prettier.arrowParens": "avoid",
+  "prettier.bracketSpacing": true,
+  "prettier.printWidth": 180,
+  "prettier.proseWrap": "always",
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": false,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "ruby.codeCompletion": "rcodetools",
+  "tslint.autoFixOnSave": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.title": "${activeEditorMedium}${separator}${folderName}",
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Visual Studio Light",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vs-seti",
+  "workbench.list.keyboardNavigation": "simple",
+  "workbench.sideBar.location": "left"
 }
