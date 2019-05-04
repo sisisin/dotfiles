@@ -2,17 +2,20 @@
 set -Ceu
 
 readonly work_dir=$(cd "$(dirname "$0")" && pwd)
+readonly VSC_APP_DIR="${HOME}/Library/Application Support/Code/User"
+
 source "$work_dir/_lib.sh"
 
-"$work_dir/scripts/get_new_snippets.sh"
-
-readonly VSC_APP_DIR="${HOME}/Library/Application Support/Code/User"
 cd ${VSC_FILES_DIRECTORY}
 
-find . -type f | while read f; do
-    [[ ${f} == ".DS_Store" ]] && continue
-    [[ ${f} == ".git" ]] && continue
-    [[ ${f} == ".gitignore" ]] && continue
-    ln -snfv "${VSC_FILES_DIRECTORY}/${f}" "${VSC_APP_DIR}/${f}"
-done
+function create_symlink() {
+    ln -snfv "${VSC_FILES_DIRECTORY}/keybindings.json" "${VSC_APP_DIR}/keybindings.json"
+    ln -snfv "${VSC_FILES_DIRECTORY}/settings.json" "${VSC_APP_DIR}/settings.json"
+
+    [ ! -L "${VSC_APP_DIR}/snippets" ] && [ -s "${VSC_APP_DIR}/snippets" ] && mv "${VSC_APP_DIR}/snippets" "${VSC_APP_DIR}/snippets.bak"
+    ln -snfv "${VSC_FILES_DIRECTORY}/snippets" "${VSC_APP_DIR}"
+}
+
+ruby "$work_dir/scripts/upsert_vscode_extension.rb"
+create_symlink
 echo $(tput setaf 2)Deploy VSCode setting files complete!. ✔︎$(tput sgr0)

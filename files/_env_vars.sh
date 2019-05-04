@@ -44,6 +44,11 @@ alias reload="exec $SHELL -l"
 alias cdd="cd $(echo $DOTFILES_PATH)"
 alias coded="code $(echo $DOTFILES_PATH)"
 
+function code() {
+    (ruby $DOTFILES_PATH/scripts/check_diff_vscode_extension.rb &)
+    /usr/local/bin/code $@
+}
+
 # ----------------------
 # Git Aliases
 # ----------------------
