@@ -13,7 +13,6 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-
 # vcs setting
 autoload -U compinit
 compinit -u
@@ -28,14 +27,15 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
+precmd() {
+    vcs_info
+}
 
 PROMPT='[%~] ${vcs_info_msg_0_}%# '
 
-
 # homebrew-file
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
+if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+    source $(brew --prefix)/etc/brew-wrap
 fi
 
 source ~/_env_vars.sh

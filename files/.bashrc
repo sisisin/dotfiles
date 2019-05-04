@@ -1,12 +1,12 @@
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-  source $(brew --prefix)/etc/brew-wrap
+if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+    source $(brew --prefix)/etc/brew-wrap
 fi
 
 hlcp() {
-  pbpaste | highlight $* -O rtf -K 24 | pbcopy
+    pbpaste | highlight $* -O rtf -K 24 | pbcopy
 }
 hlcpf() {
-  pbpaste | highlight $* -O rtf -K 24 -s Breeze | pbcopy
+    pbpaste | highlight $* -O rtf -K 24 -s Breeze | pbcopy
 }
 
 alias jxa='osascript -l JavaScript'
@@ -27,7 +27,7 @@ alias gbd='git branch -d '
 alias gbds='git branch -D `git branch | peco`'
 
 function gbdm() {
-  git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
+    git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
 }
 
 alias gc='git commit'
@@ -64,4 +64,3 @@ function glf() { git log --all --grep="$1"; }
 # ----------------------
 alias hpr='hub pull-request'
 alias hbr='hub browse'
-

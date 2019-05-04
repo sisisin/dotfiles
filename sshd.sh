@@ -8,7 +8,7 @@ sshd_sec_settings=(
     PasswordAuthentication
 )
 
-function rewrite_sshd(){
+function rewrite_sshd() {
     local target=/etc/ssh/sshd_config
     [[ ! -e "$target.bak" ]] && sudo cp $target "$target.bak"
     for setting in "${sshd_sec_settings[@]}"; do
