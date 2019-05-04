@@ -46,7 +46,7 @@ alias coded="code $(echo $DOTFILES_PATH)"
 
 function code() {
     (ruby $DOTFILES_PATH/scripts/check_diff_vscode_extension.rb &)
-    /usr/local/bin/code $@
+    /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code $@
 }
 
 # ----------------------

@@ -9,12 +9,33 @@ module ExtensionFile
   module_function :path
 end
 
+module Code
+  @cmd = '/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+
+  def list_extensions
+    `#{@cmd} --list-extensions`.split("\n")
+  end
+
+  def install_extensions(arg)
+    target = if arg.instance_of? Array
+               arg.join(" ")
+             elsif arg.instance_of? String
+               arg
+             else
+               raise "Argument error."
+             end
+    `#{@cmd} --install-extension #{target}`
+  end
+
+  module_function :list_extensions, :install_extensions
+end
+
 class VscodeExtensionChecker
   attr_reader :not_installed_list, :should_add_to_list
 
   def initialize
     extension_list = File.open(ExtensionFile.path) { |f| f.read }.split("\n").sort
-    installed_list = `code --list-extensions`.split("\n").sort
+    installed_list = Code.list_extensions.sort
 
     @not_installed_list = extension_list - installed_list
     @should_add_to_list = installed_list - extension_list
