@@ -1,0 +1,114 @@
+
+# tap repositories and their packages
+
+tap homebrew/core
+brew autoconf
+brew cairo
+brew cloc
+brew curl
+brew direnv
+brew fontconfig
+brew fontforge
+brew freetype
+brew fribidi
+brew gcc
+brew gdbm
+brew gettext
+brew git
+brew glib
+brew gmp
+brew gnu-sed
+brew gobject-introspection
+brew graphite2
+brew harfbuzz
+brew hub
+brew icu4c
+brew isl
+brew jid
+brew jpeg
+brew jq
+brew leiningen
+brew libevent
+brew libffi
+brew libidn2
+brew libmpc
+brew libpng
+brew libtiff
+brew libtool
+brew libunistring
+brew libyaml
+brew lua
+brew mas
+brew maven
+brew mcrypt
+brew memcached
+brew mhash
+brew mpfr
+brew mysql
+brew ncurses
+brew oniguruma
+brew openapi-generator
+brew openblas
+brew openssl
+brew pango
+brew pcre
+brew peco
+brew perl
+brew pixman
+brew pkg-config
+brew postgresql
+brew python
+brew python@2
+brew r
+brew rbenv
+brew readline
+brew reattach-to-user-namespace
+brew redis
+brew ruby
+brew ruby-build
+brew sbt
+brew scala
+brew shfmt
+brew sqlite
+brew tig
+brew tmux
+brew vim
+brew watch
+brew watchman
+brew wget
+brew xz
+brew zsh
+
+tap homebrew/cask
+
+tap heroku/brew
+brew heroku
+brew heroku-node
+
+tap rcmdnk/file
+brew brew-file
+
+tap rcmdnk/rcmdnkpac
+brew parse-plist
+
+tap sanemat/font
+brew ricty
+
+tap wakeful/selection
+brew yaml2json
+
+# Other Homebrew packages
+brew chromedriver
+
+# App Store applications
+appstore 497799835 com.apple.dt.Xcode (10.2.1)
+appstore 682658836 com.apple.garageband10 (10.3.2)
+appstore 408981434 com.apple.iMovieApp (10.1.11)
+appstore 409183694 com.apple.iWork.Keynote (9.0.1)
+appstore 409203825 com.apple.iWork.Numbers (6.0)
+appstore 409201541 com.apple.iWork.Pages (8.0)
+appstore 823766827 com.microsoft.OneDrive-mac (19.033.0218)
+appstore 896624060 com.qiita.Kobito (2.3.8)
+appstore 585829637 com.todoist.mac.Todoist (7.1.2)
+appstore 957734279 com.toggl.toggldesktop.TogglDesktop (7.4.330)
+appstore 425424353 cx.c3.theunarchiver (4.1.0)

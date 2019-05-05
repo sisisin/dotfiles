@@ -7,6 +7,7 @@ export PATH=$PATH:${DOTFILES_PATH}/bin
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
+export HOMEBREW_BREWFILE=$DOTFILES_PATH/brewfile/Brewfile
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/Dropbox/Apps/scansnap-saver"
