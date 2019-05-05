@@ -3,12 +3,11 @@
 ## init machine
 
 ```console
-init.sh
+./init.sh
 ```
 
 ## deploy update
 
 ```console
-deploy.sh
-vscode.sh
+./deploy.sh
 ```
