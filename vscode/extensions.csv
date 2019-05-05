@@ -12,11 +12,9 @@ eamodio.gitlens
 esbenp.prettier-vscode
 fcrespo82.markdown-table-formatter
 foxundermoon.shell-format
-geddski.macros
 idleberg.applescript
 kaiwood.endwise
 mbessey.vscode-rufo
-misogi.ruby-rubocop
 ms-python.python
 ms-vscode.csharp
 ms-vscode.vscode-typescript-tslint-plugin
@@ -27,5 +25,4 @@ richie5um2.vscode-sort-json
 satokaz.vscode-bs-ctrlchar-remover
 shakram02.bash-beautify
 shalldie.background
-streetsidesoftware.code-spell-checker
 wholroyd.jinja
