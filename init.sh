@@ -22,11 +22,12 @@ if has "brew"; then
     echo "$(tput setaf 2) installed Homebrew ✔︎$(tput sgr0)"
     echo "do 'brew file init.'"
 fi
+
+brew file install
+
 if has "nvm"; then
     echo "$(tput setaf 2)Already installed nvm ✔︎$(tput sgr0)"
 else
-    git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout $(git describe --abbrev=0 --tags)
-    . ~/.nvm/nvm.sh
-    nvm install node
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
     echo "$(tput setaf 2) installed nvm and node ✔︎$(tput sgr0)"
 fi
