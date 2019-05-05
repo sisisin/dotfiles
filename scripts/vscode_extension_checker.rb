@@ -17,14 +17,17 @@ module Code
   end
 
   def install_extensions(arg)
-    target = if arg.instance_of? Array
-               arg.join(" ")
-             elsif arg.instance_of? String
-               arg
-             else
-               raise "Argument error."
-             end
-    `#{@cmd} --install-extension #{target}`
+    targets = if arg.instance_of? Array
+                arg
+              elsif arg.instance_of? String
+                [arg]
+              else
+                raise "Argument error."
+              end
+    targets.each { |target|
+      puts `#{@cmd} --install-extension #{target}`
+    }
+    puts "finished installing extensions"
   end
 
   module_function :list_extensions, :install_extensions
