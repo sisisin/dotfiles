@@ -1,14 +1,15 @@
+export DOTFILES_PATH="$HOME/Dropbox/dotfiles"
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:../node_modules/.bin
 export PATH=$PATH:${HOME}/dev/aplscript/bin
+export PATH=$PATH:${DOTFILES_PATH}/bin
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/Dropbox/Apps/scansnap-saver"
-export DOTFILES_PATH="$HOME/Dropbox/dotfiles"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use

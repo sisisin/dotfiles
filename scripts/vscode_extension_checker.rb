@@ -34,17 +34,16 @@ module Code
 end
 
 class VscodeExtensionChecker
-  attr_reader :not_installed_list, :should_add_to_list
+  attr_reader :not_installed_list, :merged_list, :installed_list
 
   def initialize
     extension_list = File.open(ExtensionFile.path) { |f| f.read }.split("\n").sort
-    installed_list = Code.list_extensions.sort
-
+    @installed_list = Code.list_extensions.sort
     @not_installed_list = extension_list - installed_list
-    @should_add_to_list = installed_list - extension_list
+    @merged_list = (installed_list + extension_list).uniq.sort
   end
 
   def should_update?
-    !(not_installed_list.empty? && should_add_to_list.empty?)
+    installed_list.size != merged_list.size
   end
 end
