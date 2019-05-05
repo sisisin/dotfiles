@@ -97,7 +97,7 @@
   "tslint.autoFixOnSave": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
