@@ -84,7 +84,7 @@
   },
   "prettier.arrowParens": "avoid",
   "prettier.bracketSpacing": true,
-  "prettier.printWidth": 180,
+  "prettier.printWidth": 120,
   "prettier.proseWrap": "always",
   "prettier.semi": true,
   "prettier.singleQuote": true,
@@ -103,5 +103,6 @@
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.list.keyboardNavigation": "simple",
-  "workbench.sideBar.location": "left"
+  "workbench.sideBar.location": "left",
+  "files.autoSave": "onFocusChange"
 }
