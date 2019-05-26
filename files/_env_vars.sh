@@ -123,7 +123,7 @@ set_image_lists
 image_index=1
 bg() {
     if [ -z "$BUFFER" ]; then
-        image_index=$(($RANDOM % ${#image_list1[@]} - 1))
+        image_index=$(($RANDOM % ${#image_list1[@]} + 1))
         image_path=$image_list1[$image_index]
         (osascript ~/set_background_image.applescript $image_path &)
         zle reset-prompt
