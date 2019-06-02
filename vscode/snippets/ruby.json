@@ -8,7 +8,7 @@
     "prefix": ".each_with_index"
   },
   "lambda": {
-    "body": ["{ |${1:value}|", "$2", "}"],
+    "body": ["{ |${1:value}|", "  $2", "}"],
     "prefix": "lam"
   },
   "map": {

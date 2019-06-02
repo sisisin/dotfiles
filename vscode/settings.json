@@ -15,14 +15,21 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[ruby]": {
-    "editor.defaultFormatter": "mbessey.vscode-rufo"
+    "editor.defaultFormatter": "mbessey.vscode-rufo",
+    "editor.formatOnSave": false
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
     "editor.tabSize": 4
   },
   "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "background.enabled": false,
@@ -38,7 +45,7 @@
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderControlCharacters": false,
+  "editor.renderControlCharacters": true,
   "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -55,6 +62,7 @@
     }
   ],
   "files.autoGuessEncoding": false,
+  "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -63,6 +71,7 @@
     "src/main/js": true,
     "target/": false
   },
+  "git.autofetch": true,
   "git.enableSmartCommit": true,
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
@@ -79,9 +88,7 @@
   "gitlens.keymap": "chorded",
   "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": true,
-  "macros": {
-    "createPackageListFromPackageJsonDependencies": ["editor.action.clipboardCopyAction"]
-  },
+  "liveshare.featureSet": "insiders",
   "prettier.arrowParens": "avoid",
   "prettier.bracketSpacing": true,
   "prettier.printWidth": 120,
@@ -91,10 +98,10 @@
   "prettier.tabWidth": 2,
   "prettier.trailingComma": "all",
   "prettier.useTabs": false,
+  "ruby.codeCompletion": "rcodetools",
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
-  "ruby.codeCompletion": "rcodetools",
-  "tslint.autoFixOnSave": true,
+  "typescript.tsserver.log": "verbose",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.title": "${activeEditorMedium}${separator}${folderName}",
   "window.zoomLevel": 0,
@@ -103,6 +110,5 @@
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.list.keyboardNavigation": "simple",
-  "workbench.sideBar.location": "left",
-  "files.autoSave": "onFocusChange"
+  "workbench.sideBar.location": "left"
 }

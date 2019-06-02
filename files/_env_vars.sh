@@ -117,6 +117,11 @@ function set_image_lists() {
         image_list1[image_index]="$f"
         image_index=$(($image_index + 1))
     done
+    image_index=1
+    find "$HOME/OneDrive - simenyan/画像/kef/カントク" -name "*.png" -o -name "*.jpg" -o -name "*.gif" | while read f; do
+        image_list2[image_index]="$f"
+        image_index=$(($image_index + 1))
+    done
 }
 set_image_lists
 
@@ -131,6 +136,13 @@ bg() {
 
     zle accept-line
 }
+
+d() {
+    local image_index=$(($RANDOM % ${#image_list2[@]} + 1))
+    image_path=$image_list2[$image_index]
+    (osascript ~/set_background_image.applescript $image_path &)
+}
+
 zle -N bg
 bindkey '^m' bg
 
