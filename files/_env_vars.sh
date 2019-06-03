@@ -1,4 +1,4 @@
-export DOTFILES_PATH="$HOME/Dropbox/dotfiles"
+export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:../node_modules/.bin
@@ -7,10 +7,9 @@ export PATH=$PATH:${DOTFILES_PATH}/bin
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
-export HOMEBREW_BREWFILE=$DOTFILES_PATH/brewfile/Brewfile
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
-export SCANSNAP_DEPLOY_PATH="$HOME/Dropbox/Apps/scansnap-saver"
+export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
@@ -113,7 +112,7 @@ alias hbr='hub browse'
 
 function set_image_lists() {
     local image_index=1
-    find "$HOME/Dropbox/picture/background" -name "*.png" -o -name "*.jpg" -o -name "*.gif" | while read f; do
+    find "$HOME/OneDrive - simenyan/画像/background" -name "*.png" -o -name "*.jpg" -o -name "*.gif" | while read f; do
         image_list1[image_index]="$f"
         image_index=$(($image_index + 1))
     done

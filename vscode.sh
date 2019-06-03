@@ -6,7 +6,7 @@ readonly VSC_APP_DIR="${HOME}/Library/Application Support/Code/User"
 
 source "$work_dir/_lib.sh"
 
-cd ${VSC_FILES_DIRECTORY}
+cd "${VSC_FILES_DIRECTORY}"
 
 function create_symlink() {
     ln -snfv "${VSC_FILES_DIRECTORY}/keybindings.json" "${VSC_APP_DIR}/keybindings.json"

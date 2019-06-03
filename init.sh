@@ -23,6 +23,13 @@ if has "brew"; then
     echo "do 'brew file init.'"
 fi
 
+# need to install java for sbt, maven, or others...
+brew tap AdoptOpenJDK/openjdk
+brew cask install adoptopenjdk8
+
+brew file install
+echo $(tput setaf 2)BrewFiles install complete!. ✔︎$(tput sgr0)
+
 # NeoBundle
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh >install.sh
 sh ./install.sh
