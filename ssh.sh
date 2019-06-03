@@ -1,7 +1,6 @@
 #!/bin/bash
 set -Ceu
 
-mkdir -p ~/.ssh
 cd ~/.ssh
 readonly github_key=github_id_rsa
 if [[ ! -e $github_key ]]; then

@@ -23,12 +23,11 @@ if has "brew"; then
     echo "do 'brew file init.'"
 fi
 
-brew file install
-
 # NeoBundle
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh >install.sh
 sh ./install.sh
 vim +NeoBundleInstall +qall
+rm ./install.sh
 
 if has "nvm"; then
     echo "$(tput setaf 2)Already installed nvm ✔︎$(tput sgr0)"
