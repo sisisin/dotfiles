@@ -1,3 +1,6 @@
+set langmenu=en_US
+let $LANG = 'en_US'
+
 set autoindent
 set incsearch
 set number
@@ -5,7 +8,9 @@ set smarttab
 set wildmenu wildmode=list:full
 set cursorline
 set laststatus=2
-set statusline=%F%r%h(Line:%l,Row:%c)%{fugitive#statusline()}
+if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
+  set statusline=%F%r%h(Line:%l,Row:%c)%{fugitive#statusline()}
+endif
 
 
 syntax on
