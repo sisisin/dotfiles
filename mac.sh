@@ -13,7 +13,8 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.clock DateFormat -string "M\\U6708d\\U65e5(EEE)  H:mm"
 
 # hide Dock
-defaults write com.apple.dock autohide-delay -float 100
+defaults write com.apple.dock autohide -bool true
+
 killall Dock
 
 defaults write com.apple.finder AppleShowAllFiles -bool true

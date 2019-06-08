@@ -62,7 +62,7 @@
     }
   ],
   "files.autoGuessEncoding": false,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "onWindowChange",
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
