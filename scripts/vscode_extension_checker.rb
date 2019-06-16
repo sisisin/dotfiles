@@ -10,13 +10,25 @@ module ExtensionFile
 end
 
 module Code
-  @cmd = '/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+  @code = '/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 
   def list_extensions
-    `#{@cmd} --list-extensions`.split("\n")
+    `#{@code} --list-extensions`.split("\n")
+  end
+
+  def uninstall_extensions(arg)
+    cmd = "--uninstall-extension"
+    process_extensions(arg, cmd)
   end
 
   def install_extensions(arg)
+    cmd = "--install-extension"
+    process_extensions(arg, cmd)
+  end
+
+  private
+
+  def process_extensions(arg, cmd)
     targets = if arg.instance_of? Array
                 arg
               elsif arg.instance_of? String
@@ -25,25 +37,29 @@ module Code
                 raise "Argument error."
               end
     targets.each { |target|
-      puts `#{@cmd} --install-extension #{target}`
+      puts `#{@code} #{cmd} #{target}`
     }
-    puts "finished installing extensions"
+    puts "finished `#{cmd}` command."
   end
 
-  module_function :list_extensions, :install_extensions
+  module_function :list_extensions, :install_extensions, :uninstall_extensions, :process_extensions
 end
 
 class VscodeExtensionChecker
-  attr_reader :not_installed_list, :merged_list, :installed_list, :extension_list
+  attr_reader :not_installed_list, :merged_list, :installed_list, :extension_list, :not_written_in_file
 
   def initialize
     @extension_list = File.open(ExtensionFile.path) { |f| f.read }.split("\n").sort
     @installed_list = Code.list_extensions.sort
     @not_installed_list = extension_list - installed_list
+    @not_written_in_file = installed_list - extension_list
     @merged_list = (installed_list + extension_list).uniq.sort
   end
 
-  def should_update?
-    installed_list.size != extension_list.size
+  def should_run_install?
+    installed_list.size < extension_list.size
+  end
+  def should_uninstall?
+    installed_list.size > extension_list.size
   end
 end

@@ -39,9 +39,5 @@
     "key": "ctrl+down",
     "command": "editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
-  },
-  {
-    "key": "cmd+f1",
-    "command": "workbench.action.quickSwitchWindow"
   }
 ]
