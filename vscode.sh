@@ -16,6 +16,6 @@ function create_symlink() {
     ln -snfv "${VSC_FILES_DIRECTORY}/snippets" "${VSC_APP_DIR}"
 }
 
-$DOT_DIRECTORY/bin/vsc-ext-manager install-and-append-to-file
+"$DOT_DIRECTORY/bin/vsc-ext-manager" install-and-append-to-file
 create_symlink
 echo $(tput setaf 2)Deploy VSCode setting files complete!. ✔︎$(tput sgr0)
