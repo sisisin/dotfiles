@@ -4,7 +4,7 @@ if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 FPATH=/usr/local/share/zsh-completions:$FPATH
-FPATH="${DOTFILES_PATH}/completion/zsh-completions":$FPATH
+FPATH="${HOME}/.completion/zsh-completions":$FPATH
 
 # ----------------------
 # zsh configuration
