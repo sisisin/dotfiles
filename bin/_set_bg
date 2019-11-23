@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+source "$OneDrive/dotfiles/scripts/bg.sh"
+
+configure_image_lists
+e

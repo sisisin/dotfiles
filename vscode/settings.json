@@ -3,10 +3,22 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 4
   },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
@@ -19,7 +31,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[ruby]": {
-    "editor.defaultFormatter": "mbessey.vscode-rufo",
+    "editor.defaultFormatter": "misogi.ruby-rubocop",
     "editor.formatOnSave": false
   },
   "[shellscript]": {
@@ -33,12 +45,25 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "background.enabled": false,
-  "bracketPairColorizer.consecutivePairColors": ["()", "[]", "{}", ["Black", "Orchid", "LightSkyBlue"], "Red"],
+  "bracketPairColorizer.consecutivePairColors": [
+    "()",
+    "[]",
+    "{}",
+    [
+      "Black",
+      "Orchid",
+      "LightSkyBlue"
+    ],
+    "Red"
+  ],
   "breadcrumbs.enabled": true,
   "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.renderSideBySide": true,
   "editor.autoIndent": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  },
   "editor.detectIndentation": false,
-  "editor.fontFamily": "Ricty",
   "editor.fontSize": 15,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
@@ -49,6 +74,7 @@
   "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "eslint.autoFixOnSave": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -62,7 +88,6 @@
     }
   ],
   "files.autoGuessEncoding": false,
-  "files.autoSave": "onWindowChange",
   "files.exclude": {
     "**/.DS_Store": true,
     "**/.git": true,
@@ -88,27 +113,22 @@
   "gitlens.keymap": "chorded",
   "gitlens.views.fileHistory.enabled": true,
   "gitlens.views.lineHistory.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "liveshare.featureSet": "insiders",
-  "prettier.arrowParens": "avoid",
-  "prettier.bracketSpacing": true,
-  "prettier.printWidth": 120,
-  "prettier.proseWrap": "always",
-  "prettier.semi": true,
-  "prettier.singleQuote": true,
-  "prettier.tabWidth": 2,
-  "prettier.trailingComma": "all",
-  "prettier.useTabs": false,
+  "prettier.configPath": "/Users/sisisin-mbp/OneDrive - simenyan/dotfiles/vscode/.prettierrc.js",
   "ruby.codeCompletion": "rcodetools",
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
   "typescript.tsserver.log": "verbose",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "workbench.colorTheme": "Visual Studio Light",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.list.keyboardNavigation": "simple",
-  "workbench.sideBar.location": "left"
+  "workbench.sideBar.location": "left",
+  "editor.fontFamily": "'Myrica M',Menlo, Monaco, 'Courier New', monospace"
 }

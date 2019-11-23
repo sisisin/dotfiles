@@ -2,10 +2,13 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew augeas
 brew autoconf
 brew cairo
+brew circleci
 brew cloc
 brew curl
+brew dialog
 brew direnv
 brew fontconfig
 brew fontforge
@@ -16,8 +19,10 @@ brew gdbm
 brew gettext
 brew git
 brew glib
+brew glide
 brew gmp
 brew gnu-sed
+brew go
 brew gobject-introspection
 brew graphite2
 brew harfbuzz
@@ -69,6 +74,7 @@ brew ruby-build
 brew sbt
 brew scala
 brew shfmt
+brew sl
 brew sqlite
 brew tig
 brew tmux
@@ -88,6 +94,9 @@ tap heroku/brew
 brew heroku
 brew heroku-node
 
+tap k1LoW/tap
+brew filt
+
 tap rcmdnk/file
 brew brew-file
 
@@ -99,6 +108,9 @@ brew ricty
 
 tap wakeful/selection
 brew yaml2json
+
+# Other Homebrew packages
+brew letsencrypt
 
 # App Store applications
 appstore 497799835 com.apple.dt.Xcode (10.2.1)
