@@ -108,13 +108,8 @@ alias hbr='hub browse'
 
 # background image changer
 
-source "$OneDrive/dotfiles/scripts/bg.sh"
+source "$OneDrive/dotfiles/scripts/bg/bg.sh"
 
 configure_image_lists
-
-set_image_interval() {
-    watch -n 60 _set_bg &>/dev/null &
-}
-
 zle -N set_background
 bindkey '^m' set_background
