@@ -54,7 +54,6 @@ brew ncurses
 brew oniguruma
 brew openapi-generator
 brew openblas
-brew openssl
 brew pango
 brew pcre
 brew peco
@@ -84,6 +83,7 @@ brew watchman
 brew wget
 brew xz
 brew zsh
+brew zsh-completions
 
 tap homebrew/cask
 
@@ -111,6 +111,7 @@ brew yaml2json
 
 # Other Homebrew packages
 brew letsencrypt
+brew openssl
 
 # App Store applications
 appstore 497799835 com.apple.dt.Xcode (10.2.1)

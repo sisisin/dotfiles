@@ -1,6 +1,7 @@
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # The following lines were added by compinstall
 
