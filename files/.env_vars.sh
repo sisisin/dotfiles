@@ -12,32 +12,14 @@ export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
 export GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-[[ -f ~/_env_vars_optional.sh ]] && source ~/_env_vars_optional.sh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
-eval "$(rbenv init -)"
-
-eval "$(direnv hook zsh)"
-show_virtual_env() {
-    if [ -n "$VIRTUAL_ENV" ]; then
-        echo "($(basename $VIRTUAL_ENV))"
-    fi
-}
-PS1='$(show_virtual_env)'$PS1
-
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 
-alias jxa='osascript -l JavaScript'
+[[ -f ~/.env_vars_optional.sh ]] && source ~/.env_vars_optional.sh
+
+# ----------------------
+# Aliases
+# ----------------------
 alias rm='rm -i'
 alias df='df -h'
 alias ls='ls -CF'
@@ -105,11 +87,3 @@ function glf() { git log --all --grep="$1"; }
 # ----------------------
 alias hpr='hub pull-request'
 alias hbr='hub browse'
-
-# background image changer
-
-source "$OneDrive/dotfiles/scripts/bg/bg.sh"
-
-configure_image_lists
-zle -N set_background
-bindkey '^m' set_background
