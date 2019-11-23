@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-ruby "${DOTFILES_PATH}/scripts/install_vscode_extensions.rb"

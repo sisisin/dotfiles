@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-ruby "${DOTFILES_PATH}/scripts/sync_extensions_deletion.rb"

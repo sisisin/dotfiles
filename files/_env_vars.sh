@@ -50,7 +50,7 @@ alias coded="code \"$(echo $DOTFILES_PATH)\""
 alias be="bundle exec"
 
 function code() {
-    (ruby $DOTFILES_PATH/scripts/check_diff_vscode_extension.rb &)
+    (vsc-ext-manager check-diff &)
     /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code $@
 }
 
