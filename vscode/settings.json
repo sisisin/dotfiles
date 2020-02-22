@@ -16,19 +16,22 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[ruby]": {
     "editor.defaultFormatter": "misogi.ruby-rubocop",
@@ -39,11 +42,13 @@
     "editor.tabSize": 4
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "aws.profile": "profile:personal",
   "background.enabled": false,
   "bracketPairColorizer.consecutivePairColors": [
     "()",
@@ -57,36 +62,48 @@
     "Red"
   ],
   "breadcrumbs.enabled": true,
+  "cSpell.userWords": [
+    "Resync",
+    "appspot",
+    "autodetect",
+    "bigquery",
+    "immer",
+    "miscs",
+    "navi",
+    "ngrx",
+    "pubsub",
+    "randd",
+    "secretsmanager",
+    "sisisin",
+    "typeless"
+  ],
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": true,
-  "editor.autoIndent": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false
+    "source.fixAll": true
   },
   "editor.detectIndentation": false,
+  "editor.fontFamily": "'Myrica M',Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 15,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
+  "editor.largeFileOptimizations": true,
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderControlCharacters": true,
   "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "eslint.autoFixOnSave": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    {
-      "autoFix": true,
-      "language": "typescript"
-    },
-    {
-      "autoFix": true,
-      "language": "typescriptreact"
-    }
+    "typescript",
+    "typescriptreact"
   ],
+  "files.associations": {
+    "*.log": "text"
+  },
   "files.autoGuessEncoding": false,
   "files.exclude": {
     "**/.DS_Store": true,
@@ -115,11 +132,20 @@
   "gitlens.views.lineHistory.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "liveshare.featureSet": "insiders",
-  "prettier.configPath": "/Users/sisisin-mbp/OneDrive - simenyan/dotfiles/vscode/.prettierrc.js",
+  "prettier.disableLanguages": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.printWidth": 120,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
   "ruby.codeCompletion": "rcodetools",
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
-  "typescript.tsserver.log": "verbose",
+  "typescript.tsserver.log": "normal",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
@@ -129,6 +155,5 @@
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.list.keyboardNavigation": "simple",
-  "workbench.sideBar.location": "left",
-  "editor.fontFamily": "'Myrica M',Menlo, Monaco, 'Courier New', monospace"
+  "workbench.sideBar.location": "left"
 }

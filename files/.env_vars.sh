@@ -4,6 +4,7 @@ export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:../node_modules/.bin
 export PATH=$PATH:${HOME}/dev/aplscript/bin
 export PATH=$PATH:${DOTFILES_PATH}/bin
+export PATH="$PATH:$HOME/.jenv/bin"
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development

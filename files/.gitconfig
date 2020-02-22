@@ -1,12 +1,14 @@
 [user]
-	name = sisisin
-	email = azsisisin@gmail.com
+name = sisisin
+email = azsisisin@gmail.com
 [core]
-	excludesfile = ~/.gitignore_global
-	commentchar = auto
+excludesfile = ~/.gitignore_global
+commentchar = auto
 [alias]
-	unstg = reset HEAD
+unstg = reset HEAD
 [push]
-	default = current
+default = current
 [gg]
-	username = sisisin
+username = sisisin
+[credential]
+helper = osxkeychain

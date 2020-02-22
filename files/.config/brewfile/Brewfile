@@ -7,6 +7,7 @@ brew autoconf
 brew cairo
 brew circleci
 brew cloc
+brew clojure
 brew curl
 brew dialog
 brew direnv
@@ -17,6 +18,7 @@ brew fribidi
 brew gcc
 brew gdbm
 brew gettext
+brew ghq
 brew git
 brew glib
 brew glide
@@ -29,6 +31,7 @@ brew harfbuzz
 brew hub
 brew icu4c
 brew isl
+brew jenv
 brew jid
 brew jpeg
 brew jq
@@ -62,12 +65,12 @@ brew pixman
 brew pkg-config
 brew postgresql
 brew python
-brew python@2
 brew r
 brew rbenv
 brew readline
 brew reattach-to-user-namespace
 brew redis
+brew rlwrap
 brew ruby
 brew ruby-build
 brew sbt
@@ -112,6 +115,7 @@ brew yaml2json
 # Other Homebrew packages
 brew letsencrypt
 brew openssl
+brew python@2
 
 # App Store applications
 appstore 497799835 com.apple.dt.Xcode (10.2.1)

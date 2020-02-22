@@ -52,6 +52,17 @@ configure_image_lists
 zle -N set_background
 bindkey '^m' set_background
 
+function peco_src() {
+    local repo=$(ghq list | peco --query "$LBUFFER")
+    if [ -n "$repo" ]; then
+        repo=$(ghq list --full-path --exact $repo)
+        BUFFER="cd ${repo}"
+        zle accept-line
+    fi
+}
+zle -N peco_src
+bindkey '^g' peco_src
+
 # 少し凝った zshrc
 # License : MIT
 # http://mollifier.mit-license.org/
@@ -129,3 +140,8 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google
 
 eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"
+
+# jEnv
+eval "$(jenv init -)"
+
+source /usr/local/bin/aws_zsh_completer.sh
