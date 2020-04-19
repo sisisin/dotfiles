@@ -128,9 +128,11 @@ if [ -f $(brew --prefix)/etc/brew-wrap ]; then
     source $(brew --prefix)/etc/brew-wrap
 fi
 
+eval "$(anyenv init -)"
+
 # node version manager
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -142,6 +144,8 @@ eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"
 
 # jEnv
-eval "$(jenv init -)"
+# eval "$(jenv init -)"
 
 source /usr/local/bin/aws_zsh_completer.sh
+
+eval $(gh completion -s zsh)

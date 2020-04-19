@@ -1,4 +1,5 @@
 {
+  "editor.tokenColorCustomizations": {"semanticHighlighting": true},
   "[csharp]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4
@@ -16,7 +17,8 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[javascript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascriptreact]": {
     "editor.formatOnSave": false
@@ -25,7 +27,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -46,36 +48,36 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "vscode.typescript-language-features",
   },
   "aws.profile": "profile:personal",
   "background.enabled": false,
-  "bracketPairColorizer.consecutivePairColors": [
-    "()",
-    "[]",
-    "{}",
-    [
-      "Black",
-      "Orchid",
-      "LightSkyBlue"
-    ],
-    "Red"
-  ],
+  "bracket-pair-colorizer-2.colors": [
+    "Gold",
+    "Orchid",
+    "LightSkyBlue"
+],
   "breadcrumbs.enabled": true,
   "cSpell.userWords": [
     "Resync",
     "appspot",
     "autodetect",
     "bigquery",
+    "browserslist",
+    "camelcase",
+    "commandpost",
+    "esnext",
     "immer",
     "miscs",
     "navi",
     "ngrx",
+    "prestart",
     "pubsub",
     "randd",
     "secretsmanager",
     "sisisin",
-    "typeless"
+    "typeless",
+    "unmount"
   ],
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": true,
@@ -149,11 +151,21 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 1,
-  "workbench.colorTheme": "Visual Studio Light",
+  "window.zoomLevel": 2,
+  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
   "workbench.list.keyboardNavigation": "simple",
-  "workbench.sideBar.location": "left"
+  "workbench.sideBar.location": "left",
+  "calva.paredit.defaultKeyMap": "original",
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true
+  },
+  "editor.columnSelection": false
 }

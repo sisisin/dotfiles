@@ -24,7 +24,7 @@ export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 alias rm='rm -i'
 alias df='df -h'
 alias ls='ls -CF'
-alias ll='ls -l'
+alias ll='ls -al'
 alias wdiff="git diff --no-index --word-diff-regex='\\w+|[^[:space:]]'"
 alias srv="python -m SimpleHTTPServer"
 alias reload="exec $SHELL -l"
