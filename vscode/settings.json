@@ -71,6 +71,7 @@
     "miscs",
     "navi",
     "ngrx",
+    "preact",
     "prestart",
     "pubsub",
     "randd",
@@ -167,5 +168,6 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true
   },
-  "editor.columnSelection": false
+  "editor.columnSelection": false,
+  "liveshare.presence": false
 }

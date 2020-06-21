@@ -4,7 +4,6 @@ export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:../node_modules/.bin
 export PATH=$PATH:${HOME}/dev/aplscript/bin
 export PATH=$PATH:${DOTFILES_PATH}/bin
-export PATH="$PATH:$HOME/.jenv/bin"
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
@@ -12,9 +11,13 @@ export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
 export GOPATH="$HOME/go"
-export NVM_DIR="$HOME/.nvm"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
+
+# readline for pkg-config
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+# for rbenv
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 [[ -f ~/.env_vars_optional.sh ]] && source ~/.env_vars_optional.sh
 

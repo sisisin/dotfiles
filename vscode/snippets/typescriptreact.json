@@ -17,15 +17,27 @@
     "body": [
       "import React from 'react';",
       "",
-      "export const ${TM_FILENAME_BASE}: React.FC<$1> = ($2) => {",
+      "export const ${TM_FILENAME_BASE}: React.FC$1 = ($2) => {",
       "  return ($3);",
       "};",
       ""
     ]
   },
+  "Next React.FC File": {
+    "prefix": "next fc file",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${TM_FILENAME_BASE}: React.FC$1 = ($2) => {",
+      "  return ($3);",
+      "};",
+      "",
+      "export default ${TM_FILENAME_BASE}"
+    ]
+  },
   "React.FC": {
     "prefix": "react fc",
-    "body": ["const $1: React.FC<$2> = ($3) => {", "  return ($4);", "};", ""]
+    "body": ["const $1: React.FC$2 = ($3) => {", "  return ($4);", "};", ""]
   },
   "typeless rx import": {
     "prefix": "Rx",
