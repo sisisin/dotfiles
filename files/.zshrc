@@ -146,6 +146,7 @@ eval "$(direnv hook zsh)"
 # jEnv
 # eval "$(jenv init -)"
 
-source /usr/local/bin/aws_zsh_completer.sh
+[ -f /usr/local/bin/aws_zsh_completer.sh ] && source /usr/local/bin/aws_zsh_completer.sh
 
 eval $(gh completion -s zsh)
+export PATH="/usr/local/bin/rubocop-daemon-wrapper:$PATH"

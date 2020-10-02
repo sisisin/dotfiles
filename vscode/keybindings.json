@@ -11,7 +11,7 @@
     "when": "textInputFocus"
   },
   {
-    "key": "shift+alt+cmd+space",
+    "key": "alt+space",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
   },
@@ -64,5 +64,10 @@
     "key": "ctrl+l",
     "command": "extension.jumpy-line",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
   }
 ]

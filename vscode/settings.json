@@ -1,5 +1,5 @@
 {
-  "editor.tokenColorCustomizations": {"semanticHighlighting": true},
+  "editor.tokenColorCustomizations": { "semanticHighlighting": true },
   "[csharp]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4
@@ -36,29 +36,33 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[ruby]": {
-    "editor.defaultFormatter": "misogi.ruby-rubocop",
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rebornix.ruby"
   },
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
     "editor.tabSize": 4
   },
   "[typescript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "aws.profile": "profile:personal",
-  "background.enabled": false,
-  "bracket-pair-colorizer-2.colors": [
-    "Gold",
-    "Orchid",
-    "LightSkyBlue"
-],
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {},
+  "ruby.format": "rubocop",
+  "ruby.codeCompletion": "rcodetools",
+  "ruby.intellisense": "rubyLocate",
+
+  "aws.profile": "profile:swan",
+  "bracket-pair-colorizer-2.colors": ["Gold", "Orchid", "LightSkyBlue"],
   "breadcrumbs.enabled": true,
   "cSpell.userWords": [
+    "Orgs",
     "Resync",
     "appspot",
     "autodetect",
@@ -66,6 +70,7 @@
     "browserslist",
     "camelcase",
     "commandpost",
+    "ecspresso",
     "esnext",
     "immer",
     "miscs",
@@ -77,10 +82,11 @@
     "randd",
     "secretsmanager",
     "sisisin",
+    "turbolinks",
     "typeless",
     "unmount"
   ],
-  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
@@ -98,12 +104,7 @@
   "editor.renderIndentGuides": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "files.associations": {
     "*.log": "text"
   },
@@ -113,9 +114,16 @@
     "**/.git": true,
     ".tmp/": true,
     "coverage": true,
-    "src/main/js": true,
-    "target/": false
+    "target/": false,
+    "/node_modules": true,
+    "/node_modules/": true
   },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  "search.useIgnoreFiles": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "gitlens.advanced.messages": {
@@ -135,25 +143,16 @@
   "gitlens.views.lineHistory.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "liveshare.featureSet": "insiders",
-  "prettier.disableLanguages": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "prettier.printWidth": 120,
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
   "typescript.tsserver.log": "normal",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
   "window.zoomLevel": 2,
-  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
@@ -169,5 +168,9 @@
     "**/node_modules/**": true
   },
   "editor.columnSelection": false,
-  "liveshare.presence": false
+  "liveshare.presence": false,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  }
 }

@@ -59,6 +59,7 @@ brew ncurses
 brew oniguruma
 brew openapi-generator
 brew openblas
+brew openssl@1.1
 brew pango
 brew pcre
 brew peco
@@ -66,7 +67,7 @@ brew perl
 brew pixman
 brew pkg-config
 brew postgresql
-brew python
+brew protobuf
 brew r
 brew rbenv
 brew readline
@@ -82,6 +83,7 @@ brew sl
 brew sqlite
 brew tig
 brew tmux
+brew tree
 brew vim
 brew watch
 brew watchman
@@ -104,6 +106,9 @@ brew heroku-node
 tap k1LoW/tap
 brew filt
 
+tap kayac/tap
+brew ecspresso
+
 tap rcmdnk/file
 brew brew-file
 
@@ -111,7 +116,6 @@ tap rcmdnk/rcmdnkpac
 brew parse-plist
 
 tap sanemat/font
-brew ricty
 
 tap wakeful/selection
 brew yaml2json
@@ -119,6 +123,7 @@ brew yaml2json
 # Other Homebrew packages
 brew letsencrypt
 brew openssl
+brew python
 brew python@2
 
 # App Store applications

@@ -1,9 +1,9 @@
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:./node_modules/.bin
-export PATH=$PATH:../node_modules/.bin
-export PATH=$PATH:${HOME}/dev/aplscript/bin
-export PATH=$PATH:${DOTFILES_PATH}/bin
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:./node_modules/.bin"
+export PATH="$PATH:../node_modules/.bin"
+export PATH="$PATH:${HOME}/dev/aplscript/bin"
+export PATH="$PATH:${DOTFILES_PATH}/bin"
 export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
@@ -28,12 +28,11 @@ alias rm='rm -i'
 alias df='df -h'
 alias ls='ls -CF'
 alias ll='ls -al'
-alias wdiff="git diff --no-index --word-diff-regex='\\w+|[^[:space:]]'"
-alias srv="python -m SimpleHTTPServer"
 alias reload="exec $SHELL -l"
 alias cdd="cd \"$(echo $DOTFILES_PATH)\""
 alias coded="code \"$(echo $DOTFILES_PATH)\""
 alias be="bundle exec"
+alias b="bundle"
 
 function code() {
     (vsc-ext-manager check-diff &)
@@ -91,3 +90,16 @@ function glf() { git log --all --grep="$1"; }
 # ----------------------
 alias hpr='hub pull-request'
 alias hbr='hub browse'
+
+# ----------------------
+# gh Aliases
+# ----------------------
+alias hpw='gh pr view --web'
+alias hrw='gh repo view --web'
+
+# ----------------------
+# python3 Aliases
+# ----------------------
+
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
