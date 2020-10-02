@@ -8,14 +8,20 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.clock DateFormat -string "M\\U6708d\\U65e5(EEE)  H:mm"
 
 # hide Dock
 defaults write com.apple.dock autohide -bool true
-
+defaults write "com.apple.dock" "autohide-delay" -int 100
 killall Dock
+
+# mouse cursor size
+defaults write "com.apple.universalaccess" "mouseDriverCursorSize" -int 2
+
+defaults write "com.apple.AppleMultitouchTrackpad" "Clicking" -bool True
 
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder FXPreferredViewStyle Nlsv
@@ -38,6 +44,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "DragLock" -bool False
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "TrackpadThreeFingerDrag" -bool True
+defaults write "com.apple.AppleMultitouchTrackpad" "TrackpadThreeFingerDrag" -bool True
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Dragging" -bool False
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "TrackpadThreeFingerVertSwipeGesture" -int 0
