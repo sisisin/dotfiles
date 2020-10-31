@@ -2,9 +2,11 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew adns
 brew anyenv
 brew augeas
 brew autoconf
+brew bdw-gc
 brew cairo
 brew circleci
 brew cloc
@@ -26,26 +28,34 @@ brew glib
 brew glide
 brew gmp
 brew gnu-sed
+brew gnupg
+brew gnutls
 brew go
 brew gobject-introspection
 brew graphite2
+brew guile
 brew harfbuzz
 brew hub
 brew icu4c
 brew isl
-brew jenv
 brew jid
 brew jpeg
 brew jq
 brew leiningen
+brew libassuan
 brew libevent
 brew libffi
+brew libgcrypt
+brew libgpg-error
 brew libidn2
+brew libksba
 brew libmpc
 brew libpng
+brew libtasn1
 brew libtiff
 brew libtool
 brew libunistring
+brew libusb
 brew libyaml
 brew lua
 brew mas
@@ -56,26 +66,29 @@ brew mhash
 brew mpfr
 brew mysql
 brew ncurses
+brew nettle
+brew npth
 brew oniguruma
 brew openapi-generator
 brew openblas
 brew openssl@1.1
+brew p11-kit
 brew pango
 brew pcre
 brew peco
 brew perl
+brew pinentry
 brew pixman
 brew pkg-config
 brew postgresql
 brew protobuf
+brew python@3.8
 brew r
-brew rbenv
 brew readline
 brew reattach-to-user-namespace
 brew redis
 brew rlwrap
 brew ruby
-brew ruby-build
 brew sbt
 brew scala
 brew shfmt
@@ -84,6 +97,7 @@ brew sqlite
 brew tig
 brew tmux
 brew tree
+brew unbound
 brew vim
 brew watch
 brew watchman
@@ -96,6 +110,9 @@ tap homebrew/cask
 
 tap AdoptOpenJDK/openjdk
 cask adoptopenjdk8
+
+tap aws/tap
+brew aws-sam-cli
 
 tap github/gh
 
@@ -134,6 +151,4 @@ appstore 409183694 com.apple.iWork.Keynote (9.0.1)
 appstore 409203825 com.apple.iWork.Numbers (6.0)
 appstore 409201541 com.apple.iWork.Pages (8.0)
 appstore 823766827 com.microsoft.OneDrive-mac (19.033.0218)
-appstore 585829637 com.todoist.mac.Todoist (7.1.2)
-appstore 957734279 com.toggl.toggldesktop.TogglDesktop (7.4.330)
 appstore 425424353 cx.c3.theunarchiver (4.1.0)

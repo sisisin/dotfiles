@@ -51,23 +51,16 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "Escape",
-    "command": "extension.jumpy-exit",
-    "when": "editorTextFocus && jumpy.isJumpyMode"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "extension.jumpy-word",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "extension.jumpy-line",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "alt+space",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "findThenJump.initiate"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "findThenJump.initiateWithSelection"
   }
 ]

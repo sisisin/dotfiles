@@ -19,6 +19,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
 # for rbenv
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
+export EDITOR='code --wait'
 [[ -f ~/.env_vars_optional.sh ]] && source ~/.env_vars_optional.sh
 
 # ----------------------
@@ -33,11 +34,6 @@ alias cdd="cd \"$(echo $DOTFILES_PATH)\""
 alias coded="code \"$(echo $DOTFILES_PATH)\""
 alias be="bundle exec"
 alias b="bundle"
-
-function code() {
-    (vsc-ext-manager check-diff &)
-    /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code $@
-}
 
 # ----------------------
 # Git Aliases
@@ -63,7 +59,8 @@ alias gda='git diff HEAD'
 alias gdn='git diff --name-only origin/master'
 alias gi='git init'
 alias gl='git log'
-alias glg='git log --graph --oneline --decorate --all'
+alias glg='git log --graph --oneline --decorate'
+alias glga='git log --graph --oneline --decorate --all'
 alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
 alias gm='git merge --no-ff'
 alias gp='git pull'

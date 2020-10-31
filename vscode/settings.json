@@ -17,11 +17,11 @@
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[javascript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -44,21 +44,18 @@
     "editor.tabSize": 4
   },
   "[typescript]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.formatOnSave": false,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
   "ruby.lint": {},
-  "ruby.format": "rubocop",
   "ruby.codeCompletion": "rcodetools",
   "ruby.intellisense": "rubyLocate",
-
-  "aws.profile": "profile:swan",
   "bracket-pair-colorizer-2.colors": ["Gold", "Orchid", "LightSkyBlue"],
   "breadcrumbs.enabled": true,
   "cSpell.userWords": [
@@ -76,6 +73,7 @@
     "miscs",
     "navi",
     "ngrx",
+    "opetech",
     "preact",
     "prestart",
     "pubsub",
@@ -84,7 +82,8 @@
     "sisisin",
     "turbolinks",
     "typeless",
-    "unmount"
+    "unmount",
+    "wakatime"
   ],
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
@@ -143,7 +142,6 @@
   "gitlens.views.lineHistory.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "liveshare.featureSet": "insiders",
-  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "prettier.printWidth": 120,
   "prettier.semi": true,
   "prettier.singleQuote": true,
@@ -152,7 +150,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",
@@ -172,5 +170,6 @@
   "workbench.colorTheme": "Visual Studio Dark",
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
-  }
+  },
+  "aws.profile": "profile:eagle"
 }

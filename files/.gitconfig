@@ -12,3 +12,5 @@ default = current
 username = sisisin
 [credential]
 helper = osxkeychain
+[pull]
+	ff = only

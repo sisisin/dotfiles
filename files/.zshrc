@@ -92,6 +92,8 @@ setopt interactive_comments # '#' 以降をコメントとして扱う
 setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space    # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
+setopt inc_append_history
+setopt share_history
 
 ########################################
 # キーバインド
@@ -130,23 +132,19 @@ fi
 
 eval "$(anyenv init -)"
 
-# node version manager
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"
 
-# jEnv
-# eval "$(jenv init -)"
-
-[ -f /usr/local/bin/aws_zsh_completer.sh ] && source /usr/local/bin/aws_zsh_completer.sh
+# https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
+export PATH="/usr/local/bin/aws_completer:$PATH"
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
 
 eval $(gh completion -s zsh)
 export PATH="/usr/local/bin/rubocop-daemon-wrapper:$PATH"

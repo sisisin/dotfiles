@@ -15,7 +15,8 @@ nvm use node
 npm_dir=${NVM_PATH}_modules
 export NODE_PATH=$npm_dir
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
+eval "$(anyenv init -)"
 
 test -r ~/.bashrc && . ~/.bashrc
 

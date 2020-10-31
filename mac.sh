@@ -1,6 +1,10 @@
 #!/bin/bash
 set -Ceu
 
+# ref:
+# - https://rcmdnk.com/blog/2015/03/22/computer-mac/
+# - https://memo.basd4g.net/posts/macos-defaults/
+
 # alias: defaults write -g ...
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
@@ -9,6 +13,8 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.scaling 2
+defaults write NSGlobalDomain com.apple.trackpad.scaling 2
 
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.clock DateFormat -string "M\\U6708d\\U65e5(EEE)  H:mm"
@@ -18,8 +24,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write "com.apple.dock" "autohide-delay" -int 100
 killall Dock
 
-# mouse cursor size
-defaults write "com.apple.universalaccess" "mouseDriverCursorSize" -int 2
+sudo defaults write com.apple.universalaccess mouseDriverCursorSize -int 1
 
 defaults write "com.apple.AppleMultitouchTrackpad" "Clicking" -bool True
 
@@ -37,6 +42,13 @@ killall Finder
 mkdir -p ~/Pictures/ss
 defaults write com.apple.screencapture location "~/Pictures/ss"
 defaults write com.apple.screencapture name "ss_"
+
+# killall SystemUIServerするとmenuExtrasの中の重複した値は消してくれるので実質冪等
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" 1
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" 1
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+
 killall SystemUIServer
 
 # don't make .DS_store at network directory
