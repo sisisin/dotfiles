@@ -29,6 +29,11 @@ else
     curl -fsSL git.io/gg.sh | bash
 fi
 
+if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+    . $HOME/.asdf/asdf.sh
+fi
+
 # need to install java for sbt, maven, or others...
 brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk8

@@ -1,10 +1,47 @@
+function get_time() {
+    echo $(ruby -e "print Time.now.strftime('%s%L').to_i")
+}
+# usage
+# s=$(get_time); e=$(get_time); show_time $s $e
+function show_time() {
+    local start=$1
+    local end=$2
+    echo $((end - start))
+}
+
+start_time=$(get_time)
 source ~/.env_vars.sh
 
+# background image changer
+source "$OneDrive/dotfiles/scripts/bg/bg.sh"
+configure_image_lists
+zle -N set_background
+bindkey '^m' set_background
+
+# setup ghq
+function peco_src() {
+    local repo=$(ghq list | peco --query "$LBUFFER")
+    if [ -n "$repo" ]; then
+        repo=$(ghq list --full-path --exact $repo)
+        BUFFER="cd ${repo}"
+        zle accept-line
+    fi
+}
+zle -N peco_src
+bindkey '^g' peco_src
+
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
 fi
 FPATH=/usr/local/share/zsh-completions:$FPATH
 FPATH="${HOME}/.completion/zsh-completions":$FPATH
+
+# runtime version manager
+. $HOME/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# for Ruby
+export ASDF_RUBY_BUILD_VERSION=master
 
 # ----------------------
 # zsh configuration
@@ -15,7 +52,7 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
-compinit
+compinit -u
 # End of lines added by compinstall
 
 # Lines configured by zsh-newuser-install
@@ -26,9 +63,6 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # vcs setting
-autoload -U compinit
-compinit -u
-
 autoload -Uz colors
 colors
 
@@ -44,24 +78,6 @@ precmd() {
 }
 
 PROMPT='[%~] ${vcs_info_msg_0_}%# '
-
-# background image changer
-source "$OneDrive/dotfiles/scripts/bg/bg.sh"
-
-configure_image_lists
-zle -N set_background
-bindkey '^m' set_background
-
-function peco_src() {
-    local repo=$(ghq list | peco --query "$LBUFFER")
-    if [ -n "$repo" ]; then
-        repo=$(ghq list --full-path --exact $repo)
-        BUFFER="cd ${repo}"
-        zle accept-line
-    fi
-}
-zle -N peco_src
-bindkey '^g' peco_src
 
 # 少し凝った zshrc
 # License : MIT
@@ -126,11 +142,9 @@ bindkey '^R' peco-select-history
 # common configuration
 # ----------------------
 # homebrew-file
-if [ -f $(brew --prefix)/etc/brew-wrap ]; then
-    source $(brew --prefix)/etc/brew-wrap
+if [ -f $brew_prefix/etc/brew-wrap ]; then
+    source $brew_prefix/etc/brew-wrap
 fi
-
-eval "$(anyenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -138,7 +152,6 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
-# eval "$(rbenv init -)"
 eval "$(direnv hook zsh)"
 
 # https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
@@ -148,3 +161,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 eval $(gh completion -s zsh)
 export PATH="/usr/local/bin/rubocop-daemon-wrapper:$PATH"
+
+end_time=$(get_time)
+show_time $start_time $end_time

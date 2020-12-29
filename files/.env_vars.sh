@@ -1,3 +1,6 @@
+# NOTE: for perf. cmd => brew --prefix
+brew_prefix="/usr/local"
+
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:./node_modules/.bin"
@@ -17,9 +20,11 @@ export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 # readline for pkg-config
 export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
 # for rbenv
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+openssl_dir=/usr/local/opt/openssl@1.1 # NOTE: for perf. cmd => brew --prefix openssl@1.1
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_dir"
 
 export EDITOR='code --wait'
+
 [[ -f ~/.env_vars_optional.sh ]] && source ~/.env_vars_optional.sh
 
 # ----------------------

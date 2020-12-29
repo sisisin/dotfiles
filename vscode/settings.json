@@ -59,6 +59,7 @@
   "bracket-pair-colorizer-2.colors": ["Gold", "Orchid", "LightSkyBlue"],
   "breadcrumbs.enabled": true,
   "cSpell.userWords": [
+    "ISUCON",
     "Orgs",
     "Resync",
     "appspot",
@@ -115,7 +116,8 @@
     "coverage": true,
     "target/": false,
     "/node_modules": true,
-    "/node_modules/": true
+    "/node_modules/": true,
+    "tmp": false
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -150,7 +152,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.experimental.templateInterpolationService": true,
   "window.title": "${activeEditorMedium}${separator}${folderName}",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.enablePreview": true,
   "workbench.iconTheme": "vs-seti",

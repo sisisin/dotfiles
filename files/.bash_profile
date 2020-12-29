@@ -10,11 +10,6 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 source ~/.env_vars.sh
 
-[[ -s ${HOME}/.nvm/nvm.sh ]] && . ${HOME}/.nvm/nvm.sh
-nvm use node
-npm_dir=${NVM_PATH}_modules
-export NODE_PATH=$npm_dir
-
 # eval "$(rbenv init -)"
 eval "$(anyenv init -)"
 

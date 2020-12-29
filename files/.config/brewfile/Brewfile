@@ -11,6 +11,7 @@ brew cairo
 brew circleci
 brew cloc
 brew clojure
+brew coreutils
 brew curl
 brew dialog
 brew direnv
@@ -112,7 +113,6 @@ tap AdoptOpenJDK/openjdk
 cask adoptopenjdk8
 
 tap aws/tap
-brew aws-sam-cli
 
 tap github/gh
 
@@ -138,6 +138,7 @@ tap wakeful/selection
 brew yaml2json
 
 # Other Homebrew packages
+brew aws-sam-cli
 brew letsencrypt
 brew openssl
 brew python
