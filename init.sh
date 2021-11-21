@@ -26,24 +26,18 @@ fi
 if has "gg"; then
     echo "$(tput setaf 2)Already installed gg ✔︎$(tput sgr0)"
 else
-    curl -fsSL git.io/gg.sh | bash
+    curl -fsSL https://git.io/gg.sh | bash
 fi
 
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
     . $HOME/.asdf/asdf.sh
 fi
 
 # need to install java for sbt, maven, or others...
 brew tap AdoptOpenJDK/openjdk
-brew cask install adoptopenjdk8
+brew install adoptopenjdk8 --cask
 
 export HOMEBREW_BREWFILE="$DOT_DIRECTORY/files/.config/brewfile/Brewfile"
 brew file install
 echo $(tput setaf 2)BrewFiles install complete!. ✔︎$(tput sgr0)
-
-# NeoBundle
-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh >install.sh
-sh ./install.sh
-vim +NeoBundleInstall +qall
-rm ./install.sh

@@ -10,6 +10,9 @@ function show_time() {
 }
 
 start_time=$(get_time)
+
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 source ~/.env_vars.sh
 
 # background image changer
@@ -33,11 +36,13 @@ bindkey '^g' peco_src
 if type brew &>/dev/null; then
     FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
 fi
-FPATH=/usr/local/share/zsh-completions:$FPATH
-FPATH="${HOME}/.completion/zsh-completions":$FPATH
+FPATH=$brew_prefix/share/zsh-completions:$FPATH
+# FPATH="${HOME}/.completion/zsh-completions":$FPATH
 
 # runtime version manager
-. $HOME/.asdf/asdf.sh
+export ASDF_DATA_DIR="$(brew --prefix asdf)/"
+[[ -f "$ASDF_DATA_DIR/asdf.sh" ]] && . "$ASDF_DATA_DIR/asdf.sh"
+
 fpath=(${ASDF_DIR}/completions $fpath)
 
 # for Ruby
@@ -146,12 +151,6 @@ if [ -f $brew_prefix/etc/brew-wrap ]; then
     source $brew_prefix/etc/brew-wrap
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
 eval "$(direnv hook zsh)"
 
 # https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
@@ -160,7 +159,18 @@ autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
 eval $(gh completion -s zsh)
-export PATH="/usr/local/bin/rubocop-daemon-wrapper:$PATH"
+
+# kubectl completion
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
 
 end_time=$(get_time)
 show_time $start_time $end_time
+
+if [ -f "$HOME/.minikube-completion" ]; then . "$HOME/.minikube-completion"; fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
+
+[[ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"

@@ -10,10 +10,4 @@ if [[ ! -e $github_key ]]; then
     open https://github.com/settings/ssh/new
 fi
 
-readonly local_key=local_id_rsa
-if [[ ! -e $local_key ]]; then
-    ssh-keygen -t rsa -N "" -f $local_key
-    chmod 600 $local_key
-fi
-
 echo $(tput setaf 2)Generate ssh keys complete!. ✔︎$(tput sgr0)

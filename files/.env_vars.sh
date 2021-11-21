@@ -1,5 +1,5 @@
 # NOTE: for perf. cmd => brew --prefix
-brew_prefix="/usr/local"
+brew_prefix=$(brew --prefix)
 
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
 export PATH="$PATH:/usr/local/sbin"
@@ -15,13 +15,22 @@ export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
 export GOPATH="$HOME/go"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
+# export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
+
+# Android SDK
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # readline for pkg-config
-export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+# export PKG_CONFIG_PATH="$(brew --prefix readline)/lib/pkgconfig"
 # for rbenv
-openssl_dir=/usr/local/opt/openssl@1.1 # NOTE: for perf. cmd => brew --prefix openssl@1.1
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_dir"
+# openssl_dir="/usr/local/opt/openssl@1.1" # NOTE: for perf. cmd => brew --prefix openssl@1.1
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_dir"
+# export RUBY_CONFIGURE_OPTS="--with-zlib-dir=/opt/homebrew/opt/zlib --with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline --with-libyaml-dir=/opt/homebrew/opt/libyaml"
+# export RUBY_CFLAGS="-Wno-error=implicit-function-declaration"
 
 export EDITOR='code --wait'
 
@@ -50,10 +59,10 @@ function gbdm() {
     git branch --merged | grep -vE '^\*|master$|develop$' | xargs -I % git branch -d %
 }
 alias gbds='git branch -D `git branch | peco`'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gcan='git commit --amend --no-edit'
-alias gcm='git commit -m'
+alias gc='git commit --no-verify '
+alias gca='git commit --no-verify --amend'
+alias gcan='git commit --no-verify --amend --no-edit'
+alias gcm='git commit --no-verify -m'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcom='git checkout master'
@@ -88,20 +97,47 @@ alias gstd='git stash drop'
 function glf() { git log --all --grep="$1"; }
 
 # ----------------------
-# hub Aliases
-# ----------------------
-alias hpr='hub pull-request'
-alias hbr='hub browse'
-
-# ----------------------
 # gh Aliases
 # ----------------------
-alias hpw='gh pr view --web'
+alias hpw='gh pr view `gb --show-current` --web'
+alias hst='gh pr status'
+alias hpr='gh pr create -w'
+alias hbr='gh repo view -w -b `gb --show-current`'
 alias hrw='gh repo view --web'
 
 # ----------------------
 # python3 Aliases
 # ----------------------
 
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
+alias python="${brew_prefix}/bin/python3"
+alias pip="${brew_prefix}/bin/pip3"
+
+# ----------------------
+# etc
+# ----------------------
+function really_clear() {
+    clear && printf '\e[3J'
+}
+
+alias rg='rg --no-ignore'
+
+function out_ng() {
+    local target=$1
+    local query=".tunnels[] | select(.name == \"${target}\") | .public_url"
+    curl http://localhost:4040/api/tunnels -s | jq -r $query
+}
+
+function kp() {
+    local name=$1
+    echo $(ps aux | grep "$name" | grep -v grep)
+
+    echo "killします"
+    echo "ok? (y/N): "
+    if read -q; then
+        echo "続行します"
+        ps aux | grep "$name" | grep -v grep | awk '{ print "kill", $2 }' | bash
+    else
+        echo "やめました"
+    fi
+
+}

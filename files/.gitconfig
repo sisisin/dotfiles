@@ -6,6 +6,9 @@ excludesfile = ~/.gitignore_global
 commentchar = auto
 [alias]
 unstg = reset HEAD
+a = add
+aa = add -A
+f = fetch
 [push]
 default = current
 [gg]
@@ -13,4 +16,4 @@ username = sisisin
 [credential]
 helper = osxkeychain
 [pull]
-	ff = only
+ff = only

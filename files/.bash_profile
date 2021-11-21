@@ -8,10 +8,12 @@ export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
 export ASPNETCORE_ENVIRONMENT=Development
 
-source ~/.env_vars.sh
+# source ~/.env_vars.sh
 
-# eval "$(rbenv init -)"
-eval "$(anyenv init -)"
+# export ASDF_DATA_DIR="$(brew --prefix asdf)/"
+# fixme: xcodeでbrew not foundになる
+export ASDF_DATA_DIR="/opt/homebrew/opt/asdf"
+[[ -f "$ASDF_DATA_DIR/asdf.sh" ]] && . "$ASDF_DATA_DIR/asdf.sh"
 
 test -r ~/.bashrc && . ~/.bashrc
 

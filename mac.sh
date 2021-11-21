@@ -24,9 +24,13 @@ defaults write com.apple.dock autohide -bool true
 defaults write "com.apple.dock" "autohide-delay" -int 100
 killall Dock
 
-sudo defaults write com.apple.universalaccess mouseDriverCursorSize -int 1
+# マウスカーソル変更だが何故か効かない
+sudo defaults write "com.apple.universalaccess" "mouseDriverCursorSize" -float 2.2500601835
 
 defaults write "com.apple.AppleMultitouchTrackpad" "Clicking" -bool True
+
+# fn key behavior
+defaults write "com.apple.touchbar.agent" "PresentationModeGlobal" -string "functionKeys"
 
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder FXPreferredViewStyle Nlsv
@@ -39,8 +43,8 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowTabView -bool true
 killall Finder
 
-mkdir -p ~/Pictures/ss
-defaults write com.apple.screencapture location "~/Pictures/ss"
+mkdir -p ~/Pictures/scsh
+defaults write com.apple.screencapture location "~/Pictures/scsh"
 defaults write com.apple.screencapture name "ss_"
 
 # killall SystemUIServerするとmenuExtrasの中の重複した値は消してくれるので実質冪等

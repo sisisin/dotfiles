@@ -1,10 +1,9 @@
-if [ -f $(brew --prefix)/etc/brew-wrap ]; then
-    source $(brew --prefix)/etc/brew-wrap
-fi
+# if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+#     source $(brew --prefix)/etc/brew-wrap
+# fi
 
-hlcp() {
-    pbpaste | highlight $* -O rtf -K 24 | pbcopy
-}
-hlcpf() {
-    pbpaste | highlight $* -O rtf -K 24 -s Breeze | pbcopy
-}
+# export NODE_BINARY=/Users/sisisin/.asdf/shims/node
+# # runtime version manager
+# . $HOME/.asdf/asdf.sh
+
+# eval "$(direnv hook bash)"
