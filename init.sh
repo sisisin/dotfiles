@@ -23,17 +23,6 @@ if has "brew"; then
     echo "do 'brew file init.'"
 fi
 
-if has "gg"; then
-    echo "$(tput setaf 2)Already installed gg ✔︎$(tput sgr0)"
-else
-    curl -fsSL https://git.io/gg.sh | bash
-fi
-
-if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
-    . $HOME/.asdf/asdf.sh
-fi
-
 # need to install java for sbt, maven, or others...
 brew tap AdoptOpenJDK/openjdk
 brew install adoptopenjdk8 --cask

@@ -1,5 +1,5 @@
 # NOTE: for perf. cmd => brew --prefix
-brew_prefix=$(brew --prefix)
+brew_prefix=$HOMEBREW_PREFIX
 
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
 export PATH="$PATH:/usr/local/sbin"
@@ -7,9 +7,7 @@ export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:../node_modules/.bin"
 export PATH="$PATH:${HOME}/dev/aplscript/bin"
 export PATH="$PATH:${DOTFILES_PATH}/bin"
-export PLAY_MAILER_PORT=25000
 export PGDATA=/usr/local/var/postgres
-export ASPNETCORE_ENVIRONMENT=Development
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
@@ -95,6 +93,19 @@ alias gstd='git stash drop'
 # ----------------------
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
+
+# https://github.com/not-an-aardvark/git-delete-squashed
+gbdms() {
+    local targetBranch=${1:-master}
+    git checkout -q $targetBranch &&
+        git branch --merged | grep -v "\*" | xargs -n 1 git branch -d &&
+        git for-each-ref refs/heads/ "--format=%(refname:short)" |
+        while read branch; do
+            mergeBase=$(git merge-base $targetBranch $branch) &&
+                [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] &&
+                git branch -D $branch
+        done
+}
 
 # ----------------------
 # gh Aliases

@@ -17,3 +17,5 @@ username = sisisin
 helper = osxkeychain
 [pull]
 ff = only
+[init]
+	defaultBranch = main

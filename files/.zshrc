@@ -1,35 +1,21 @@
-function get_time() {
-    echo $(ruby -e "print Time.now.strftime('%s%L').to_i")
-}
-# usage
-# s=$(get_time); e=$(get_time); show_time $s $e
-function show_time() {
-    local start=$1
-    local end=$2
-    echo $((end - start))
-}
+# zmodload zsh/zprof
 
-start_time=$(get_time)
+zmodload zsh/datetime
+start_time=$(strftime '%s%.')
 
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source ~/.env_vars.sh
 
+source "$OneDrive/dotfiles/scripts/zshlib.sh"
+
 # background image changer
 source "$OneDrive/dotfiles/scripts/bg/bg.sh"
 configure_image_lists
-zle -N set_background
-bindkey '^m' set_background
+zle -N set_background_random
+bindkey '^m' set_background_random
 
 # setup ghq
-function peco_src() {
-    local repo=$(ghq list | peco --query "$LBUFFER")
-    if [ -n "$repo" ]; then
-        repo=$(ghq list --full-path --exact $repo)
-        BUFFER="cd ${repo}"
-        zle accept-line
-    fi
-}
 zle -N peco_src
 bindkey '^g' peco_src
 
@@ -37,7 +23,6 @@ if type brew &>/dev/null; then
     FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
 fi
 FPATH=$brew_prefix/share/zsh-completions:$FPATH
-# FPATH="${HOME}/.completion/zsh-completions":$FPATH
 
 # runtime version manager
 export ASDF_DATA_DIR="$(brew --prefix asdf)/"
@@ -82,7 +67,8 @@ precmd() {
     vcs_info
 }
 
-PROMPT='[%~] ${vcs_info_msg_0_}%# '
+PROMPT='[%~] ${vcs_info_msg_0_}
+%# '
 
 # 少し凝った zshrc
 # License : MIT
@@ -131,15 +117,6 @@ alias sudo='sudo '
 # peco
 
 # C-rでコマンド履歴がpeco経由で見れる
-function peco-select-history() {
-    # historyを番号なし、逆順、最初から表示。
-    # 順番を保持して重複を削除。
-    # カーソルの左側の文字列をクエリにしてpecoを起動
-    # \nを改行に変換
-    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
-    CURSOR=$#BUFFER # カーソルを文末に移動
-    zle -R -c       # refresh
-}
 zle -N peco-select-history
 bindkey '^R' peco-select-history
 
@@ -161,16 +138,42 @@ complete -C '/usr/local/bin/aws_completer' aws
 eval $(gh completion -s zsh)
 
 # kubectl completion
-source <(kubectl completion zsh)
+function _kubectl() {
+    unfunction $0
+    source <(kubectl completion zsh)
+    $0
+}
+
+compdef _kubectl kubectl
 alias k=kubectl
 complete -F __start_kubectl k
 
-end_time=$(get_time)
-show_time $start_time $end_time
-
-if [ -f "$HOME/.minikube-completion" ]; then . "$HOME/.minikube-completion"; fi
+# if [ -f "$HOME/.minikube-completion" ]; then . "$HOME/.minikube-completion"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
 
 [[ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"
+
+# ---------
+
+end_time=$(strftime '%s%.')
+echo $((end_time - start_time))
+
+if type zprof >/dev/null 2>&1; then
+    zprof | less
+fi
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk

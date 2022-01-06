@@ -20,6 +20,11 @@ function e() {
 }
 
 function set_background() {
+    local image_path=$1
+    osascript $OneDrive/dotfiles/scripts/bg/set_background_image.applescript $image_path
+}
+
+function set_background_random() {
     if [ -z "$BUFFER" ]; then
         image_index=$(($RANDOM % ${#image_list1[@]} + 1))
         image_path=$image_list1[$image_index]
@@ -41,7 +46,7 @@ function set_image_interval_e() {
 }
 
 function set_image_interval() {
-    _set_image_interval set_background
+    _set_image_interval set_background_random
 }
 
 function unset_image_interval() {
