@@ -25,8 +25,7 @@ fi
 FPATH=$brew_prefix/share/zsh-completions:$FPATH
 
 # runtime version manager
-export ASDF_DATA_DIR="$(brew --prefix asdf)/"
-[[ -f "$ASDF_DATA_DIR/asdf.sh" ]] && . "$ASDF_DATA_DIR/asdf.sh"
+. $HOME/.asdf/asdf.sh
 
 fpath=(${ASDF_DIR}/completions $fpath)
 
@@ -46,7 +45,8 @@ compinit -u
 # End of lines added by compinstall
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
+# HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
 bindkey -e
@@ -147,6 +147,8 @@ function _kubectl() {
 compdef _kubectl kubectl
 alias k=kubectl
 complete -F __start_kubectl k
+
+eval "$(op completion zsh)"; compdef _op op
 
 # if [ -f "$HOME/.minikube-completion" ]; then . "$HOME/.minikube-completion"; fi
 

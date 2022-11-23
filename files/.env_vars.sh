@@ -1,26 +1,28 @@
 # NOTE: for perf. cmd => brew --prefix
 brew_prefix=$HOMEBREW_PREFIX
 
+export GOPATH="$HOME/go"
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
+
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:../node_modules/.bin"
 export PATH="$PATH:${HOME}/dev/aplscript/bin"
 export PATH="$PATH:${DOTFILES_PATH}/bin"
+export PATH="$PATH:${GOPATH}/bin"
 export PGDATA=/usr/local/var/postgres
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
-export GOPATH="$HOME/go"
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.11)
 # export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 
 # Android SDK
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 # readline for pkg-config
 # export PKG_CONFIG_PATH="$(brew --prefix readline)/lib/pkgconfig"
@@ -46,6 +48,10 @@ alias cdd="cd \"$(echo $DOTFILES_PATH)\""
 alias coded="code \"$(echo $DOTFILES_PATH)\""
 alias be="bundle exec"
 alias b="bundle"
+alias rgni='rg --no-ignore'
+alias da='direnv allow'
+alias yw='yarn workspace'
+alias y='yarn'
 
 # ----------------------
 # Git Aliases
@@ -87,6 +93,9 @@ alias gst='git stash'
 alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
+
+alias gcb='git rev-parse --abbrev-ref HEAD'
+alias gch='git rev-parse HEAD'
 
 # ----------------------
 # Git Function
@@ -130,8 +139,6 @@ function really_clear() {
     clear && printf '\e[3J'
 }
 
-alias rg='rg --no-ignore'
-
 function out_ng() {
     local target=$1
     local query=".tunnels[] | select(.name == \"${target}\") | .public_url"
@@ -151,4 +158,45 @@ function kp() {
         echo "やめました"
     fi
 
+}
+
+# Copy from https://github.com/antoniomo/gcloud-ps1
+# Inspired in https://github.com/jonmosco/kube-ps1
+
+GCLOUD_BIN="${GCLOUD_BIN:-gcloud}"
+GCLOUD_PS1_ENABLE="${GCLOUD_PS1_ENABLE:-true}"
+GCLOUD_PS1_SYMBOL_ENABLE="${GCLOUD_PS1_SYMBOL_ENABLE:-true}"
+GCLOUD_PS1_SYMBOL="${GCLOUD_PS1_SYMBOL:-☁ }"
+
+if [ "${ZSH_VERSION-}" ]; then
+    GCLOUD_PS1_SHELL="zsh"
+elif [ "${BASH_VERSION-}" ]; then
+    GCLOUD_PS1_SHELL="bash"
+fi
+
+gcloudon() {
+    GCLOUD_PS1_ENABLE=true
+}
+
+gcloudoff() {
+    GCLOUD_PS1_ENABLE=false
+}
+
+gcloud_ps1() {
+    # Terminal colors
+    local reset='\033[0m'
+    local blue='\033[1m\033[34m'
+    local green='\033[1m\033[32m'
+
+    GCLOUD_PS1=""
+    if [[ ${GCLOUD_PS1_ENABLE} == true ]]; then
+        GCLOUD_PS1+='('
+        if [[ ${GCLOUD_PS1_SYMBOL_ENABLE} == true ]]; then
+            GCLOUD_PS1+="${blue}${GCLOUD_PS1_SYMBOL} "
+        fi
+        ACTIVE_CONF=$(${GCLOUD_BIN} config configurations list --format='value(name)' --filter='IS_ACTIVE=true' 2>/dev/null)
+        GCLOUD_PS1+="${green}$ACTIVE_CONF${reset})"
+    fi
+
+    echo "${GCLOUD_PS1}"
 }

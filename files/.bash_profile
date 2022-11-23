@@ -4,16 +4,10 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:../node_modules/.bin
 export PATH=$PATH:${HOME}/dev/aplscript/bin
-export PLAY_MAILER_PORT=25000
-export PGDATA=/usr/local/var/postgres
-export ASPNETCORE_ENVIRONMENT=Development
 
 source ~/.env_vars.sh
 
-# export ASDF_DATA_DIR="$(brew --prefix asdf)/"
-# fixme: xcodeでbrew not foundになる
-export ASDF_DATA_DIR="/opt/homebrew/opt/asdf"
-[[ -f "$ASDF_DATA_DIR/asdf.sh" ]] && . "$ASDF_DATA_DIR/asdf.sh"
+. $HOME/.asdf/asdf.sh
 
 test -r ~/.bashrc && . ~/.bashrc
 
