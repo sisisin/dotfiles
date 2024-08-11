@@ -30,6 +30,12 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 export CLOUDSDK_PYTHON="$brew_prefix/bin/python3.9"
 
+# dart pubs
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# fastlane for flutter
+export FLUTTER_ROOT="$HOME/.asdf/shims/flutter"
+
 # readline for pkg-config
 # export PKG_CONFIG_PATH="$(brew --prefix readline)/lib/pkgconfig"
 # for rbenv
@@ -178,6 +184,10 @@ function kp() {
 function set_title() {
     local b=${1-$(basename $(pwd))}
     printf "\033]2;%s\033\\r:r" "$b"
+}
+
+function set_tab_title() {
+  echo -ne "\e]1;$1\a"
 }
 
 # Copy from https://github.com/antoniomo/gcloud-ps1

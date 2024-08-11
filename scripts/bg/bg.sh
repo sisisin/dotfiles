@@ -15,20 +15,20 @@ function e() {
     if [[ "$PRIVATE_ENV" == 1 ]]; then
         local image_index=$(($RANDOM % ${#image_list3[@]} + 1))
         image_path=$image_list3[$image_index]
-        (osascript $OneDrive/dotfiles/scripts/bg/set_background_image.applescript $image_path &)
+        (osascript -l JavaScript $OneDrive/dotfiles/scripts/bg/set_bg_image.jxa $image_path &)
     fi
 }
 
 function set_background() {
     local image_path=$1
-    osascript $OneDrive/dotfiles/scripts/bg/set_background_image.applescript $image_path
+    osascript -l JavaScript $OneDrive/dotfiles/scripts/bg/set_bg_image.jxa $image_path
 }
 
 function set_background_random() {
     if [ -z "$BUFFER" ]; then
         image_index=$(($RANDOM % ${#image_list1[@]} + 1))
         image_path=$image_list1[$image_index]
-        (osascript $OneDrive/dotfiles/scripts/bg/set_background_image.applescript $image_path &)
+        (osascript -l JavaScript $OneDrive/dotfiles/scripts/bg/set_bg_image.jxa $image_path &)
         zle reset-prompt
     fi
 

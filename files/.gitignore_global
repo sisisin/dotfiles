@@ -2,3 +2,5 @@
 .DS_Store
 metals.*
 main_.go
+
+.nyan

@@ -3,7 +3,6 @@
 zmodload zsh/datetime
 start_time=$(strftime '%s%.')
 
-eval "$(direnv hook zsh)"
 
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -28,7 +27,6 @@ if type brew &>/dev/null; then
     FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
 fi
 FPATH=$brew_prefix/share/zsh-completions:$FPATH
-
 
 # runtime version manager
 # Check if $HOME/.asdf/asdf.sh exists and source it
@@ -194,3 +192,5 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
+
+eval "$(direnv hook zsh)"

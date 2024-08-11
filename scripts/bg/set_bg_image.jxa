@@ -1,0 +1,13 @@
+function run(argv) {
+  var iTerm = Application('iTerm');
+
+
+  // for (const w of iTerm.windows()) {
+    const w = iTerm.currentWindow();
+    for (const tab of w.tabs()) {
+      for (const session of tab.sessions()) {
+        session.backgroundImage = argv[0];
+      }
+    }
+  // }
+}

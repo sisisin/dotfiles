@@ -1,8 +1,9 @@
 nodejs 18.19.0
-ruby 3.0.0
+ruby 3.3.4
 terraform 1.7.4
-golang 1.21.2
+golang 1.22.6
 python 3.10.11
 task 3.34.0
 direnv 2.33.0
 golangci-lint 1.55.2
+flutter 3.22.2-stable
