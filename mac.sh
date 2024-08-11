@@ -3,7 +3,8 @@ set -Ceu
 
 # ref:
 # - https://rcmdnk.com/blog/2015/03/22/computer-mac/
-# - https://memo.basd4g.net/posts/macos-defaults/
+# - https://web.archive.org/web/20210418033620/https://rcmdnk.com/blog/2015/03/22/computer-mac/
+#   - 元url: https://memo.basd4g.net/posts/macos-defaults/
 
 # alias: defaults write -g ...
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true

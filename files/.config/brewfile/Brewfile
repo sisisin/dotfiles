@@ -4,4 +4,4 @@
 tap homebrew/core
 
 # Main file
-main ./Brewfile.$OSTYPE.$PLATFORM
+main Brewfile.darwin.arm64

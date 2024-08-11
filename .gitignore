@@ -2,3 +2,4 @@
 files/.aws/credentials
 files/.ssh/config
 .tmux/resurrect
+letsencrypt/

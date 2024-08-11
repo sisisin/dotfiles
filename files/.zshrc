@@ -3,6 +3,8 @@
 zmodload zsh/datetime
 start_time=$(strftime '%s%.')
 
+eval "$(direnv hook zsh)"
+
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 source ~/.env_vars.sh
@@ -15,6 +17,9 @@ configure_image_lists
 zle -N set_background_random
 bindkey '^m' set_background_random
 
+bindkey "[C" forward-word
+bindkey "[D" backward-word
+
 # setup ghq
 zle -N peco_src
 bindkey '^g' peco_src
@@ -24,8 +29,17 @@ if type brew &>/dev/null; then
 fi
 FPATH=$brew_prefix/share/zsh-completions:$FPATH
 
+
 # runtime version manager
-. $HOME/.asdf/asdf.sh
+# Check if $HOME/.asdf/asdf.sh exists and source it
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    . "$HOME/.asdf/asdf.sh"
+elif [ -f "$(brew --prefix asdf)/libexec/asdf.sh"]; then
+    . "$(brew --prefix asdf)/libexec/asdf.sh"
+fi
+
+# for golang
+. ~/.asdf/plugins/golang/set-env.zsh
 
 fpath=(${ASDF_DIR}/completions $fpath)
 
@@ -63,11 +77,13 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
 precmd() {
+    RETVAL=$?
     vcs_info
 }
 
-PROMPT='[%~] ${vcs_info_msg_0_}
+PROMPT='%{$([ $RETVAL -eq 0 ] && echo "\e[32m✔" || echo "\e[31m✖")%}%{$reset_color%} [%~] ${vcs_info_msg_0_}
 %# '
 
 # 少し凝った zshrc
@@ -128,12 +144,10 @@ if [ -f $brew_prefix/etc/brew-wrap ]; then
     source $brew_prefix/etc/brew-wrap
 fi
 
-eval "$(direnv hook zsh)"
-
 # https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
-export PATH="/usr/local/bin/aws_completer:$PATH"
+# export PATH="$PATH:/usr/local/bin/aws_completer"
 autoload bashcompinit && bashcompinit
-complete -C '/usr/local/bin/aws_completer' aws
+# complete -C '/usr/local/bin/aws_completer' aws
 
 eval $(gh completion -s zsh)
 
@@ -141,6 +155,7 @@ eval $(gh completion -s zsh)
 function _kubectl() {
     unfunction $0
     source <(kubectl completion zsh)
+    source <(kubectl argo rollouts completion zsh)
     $0
 }
 
