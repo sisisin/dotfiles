@@ -3,16 +3,32 @@
 zmodload zsh/datetime
 start_time=$(strftime '%s%.')
 
+function has() {
+    type "$1" >/dev/null 2>&1
+}
 
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
+if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"; fi
+
+if [[ -f "$HOME/.local/bin/mise" ]]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
+fi
+eval "$($HOME/.local/bin/mise activate zsh --shims)"
+
+
 source ~/.env_vars.sh
+
+[[ -f ~/.env_local.sh ]] && source ~/.env_local.sh
 
 source "$OneDrive/dotfiles/scripts/zshlib.sh"
 
 # background image changer
 source "$OneDrive/dotfiles/scripts/bg/bg.sh"
 configure_image_lists
+set_current_image
+
 zle -N set_background_random
 bindkey '^m' set_background_random
 
@@ -24,25 +40,9 @@ zle -N peco_src
 bindkey '^g' peco_src
 
 if type brew &>/dev/null; then
-    FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
+    # FPATH=$brew_prefix/share/zsh/site-functions:$FPATH
 fi
-FPATH=$brew_prefix/share/zsh-completions:$FPATH
-
-# runtime version manager
-# Check if $HOME/.asdf/asdf.sh exists and source it
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-    . "$HOME/.asdf/asdf.sh"
-elif [ -f "$(brew --prefix asdf)/libexec/asdf.sh"]; then
-    . "$(brew --prefix asdf)/libexec/asdf.sh"
-fi
-
-# for golang
-. ~/.asdf/plugins/golang/set-env.zsh
-
-fpath=(${ASDF_DIR}/completions $fpath)
-
-# for Ruby
-export ASDF_RUBY_BUILD_VERSION=master
+FPATH="$OneDrive/dotfiles/zsh/completions:$FPATH"
 
 # ----------------------
 # zsh configuration
@@ -53,8 +53,11 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
-compinit -u
+compinit -i
 # End of lines added by compinstall
+
+# すべての git サブコマンド補完で ORIG_HEAD / origin を無視
+zstyle ':completion:*:*:git-*:*' ignored-patterns 'ORIG_HEAD' 'origin'
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
@@ -137,17 +140,10 @@ bindkey '^R' peco-select-history
 # ----------------------
 # common configuration
 # ----------------------
-# homebrew-file
-if [ -f $brew_prefix/etc/brew-wrap ]; then
-    source $brew_prefix/etc/brew-wrap
-fi
 
 # https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
 # export PATH="$PATH:/usr/local/bin/aws_completer"
 autoload bashcompinit && bashcompinit
-# complete -C '/usr/local/bin/aws_completer' aws
-
-eval $(gh completion -s zsh)
 
 # kubectl completion
 function _kubectl() {
@@ -161,15 +157,6 @@ compdef _kubectl kubectl
 alias k=kubectl
 complete -F __start_kubectl k
 
-eval "$(op completion zsh)"; compdef _op op
-
-# if [ -f "$HOME/.minikube-completion" ]; then . "$HOME/.minikube-completion"; fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
-
-[[ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"
-
 # ---------
 
 end_time=$(strftime '%s%.')
@@ -179,18 +166,22 @@ if type zprof >/dev/null 2>&1; then
     zprof | less
 fi
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+if command -v aqua &> /dev/null; then
+    source <(aqua completion zsh)
 fi
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
 
-eval "$(direnv hook zsh)"
+# aqua
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# pnpm
+export PNPM_HOME="/Users/sisisin/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

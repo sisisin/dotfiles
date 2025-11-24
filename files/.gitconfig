@@ -4,6 +4,8 @@ email = azsisisin@gmail.com
 [core]
 excludesfile = ~/.gitignore_global
 commentchar = auto
+	fsmonitor = true
+	untrackedcache = true
 [alias]
 unstg = reset HEAD
 a = add
@@ -19,3 +21,5 @@ helper = osxkeychain
 ff = only
 [init]
 	defaultBranch = main
+[fetch]
+	showForcedUpdates = true

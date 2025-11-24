@@ -4,7 +4,7 @@ function run(argv) {
   const w = iTerm.currentWindow();
   for (const tab of w.tabs()) {
     for (const session of tab.sessions()) {
-      session.backgroundImage = argv[0];
+      session.backgroundImage = "";
     }
   }
 }

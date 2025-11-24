@@ -3,3 +3,5 @@ files/.aws/credentials
 files/.ssh/config
 .tmux/resurrect
 letsencrypt/
+scripts/bg/.current_image
+/zsh

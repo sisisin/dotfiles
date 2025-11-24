@@ -1,7 +1,7 @@
 # NOTE: for perf. cmd => brew --prefix
 brew_prefix=$HOMEBREW_PREFIX
 
-export GOPATH="$HOME/go"
+# export GOPATH="$HOME/go"
 export DOTFILES_PATH="${HOME}/OneDrive - simenyan/dotfiles"
 
 export PATH="$PATH:/usr/local/sbin"
@@ -10,16 +10,29 @@ export PATH="$PATH:../node_modules/.bin"
 export PATH="$PATH:${HOME}/dev/aplscript/bin"
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH="$PATH:${DOTFILES_PATH}/bin"
-export PATH="$PATH:${GOPATH}/bin"
+# duckdb
+export PATH="${HOME}/.duckdb/cli/latest:$PATH"
+# export PATH="$PATH:${GOPATH}/bin"
 export PGDATA=/usr/local/var/postgres
 export OneDrive="$HOME/OneDrive - simenyan"
 export SCANSNAP_SAVER_PATH="$HOME/items/scansnap-saver"
 export SCANSNAP_DEPLOY_PATH="$HOME/OneDrive - simenyan/Apps/scansnap-saver"
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.11)
+
+export CLOUDSDK_PYTHON="/usr/bin/python3"
+
+
+# if [[ -f ~/.asdf/plugins/java/set-java-home.zsh ]]; then
+#   source ~/.asdf/plugins/java/set-java-home.zsh
+# else
+# todo: https://mise.jdx.dev/lang/java.html
+  # export JAVA_HOME=$(/usr/libexec/java_home -v 1.11)
+# fi
+
+
 # export MAVEN_HOME=/usr/local/Cellar/maven/3.5.4
 
 # GO
-export ASDF_GOLANG_MOD_VERSION_ENABLED=false
+# export ASDF_GOLANG_MOD_VERSION_ENABLED=false
 
 # Android SDK
 export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -28,13 +41,11 @@ export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-export CLOUDSDK_PYTHON="$brew_prefix/bin/python3.9"
-
 # dart pubs
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # fastlane for flutter
-export FLUTTER_ROOT="$HOME/.asdf/shims/flutter"
+# export FLUTTER_ROOT="$HOME/.asdf/shims/flutter"
 
 # readline for pkg-config
 # export PKG_CONFIG_PATH="$(brew --prefix readline)/lib/pkgconfig"
@@ -51,41 +62,52 @@ export EDITOR='code --wait'
 # ----------------------
 # Aliases
 # ----------------------
-alias rm='rm -i'
 alias df='df -h'
 alias ls='ls -CF'
 alias ll='ls -al'
 alias reload="exec $SHELL -l"
-alias cdd="cd \"$(echo $DOTFILES_PATH)\""
 alias coded="code \"$(echo $DOTFILES_PATH)\""
-alias be="bundle exec"
-alias b="bundle"
-alias rgni='rg --no-ignore'
 alias da='direnv allow'
-alias yw='yarn workspace'
 alias y='yarn'
 alias p='pnpm'
+alias tf='terraform'
+alias lg='lazygit'
+alias sc='sandbox-exec -f "$OneDrive/dotfiles/scripts/permissive-open.sb" -D TARGET_DIR="$(pwd)" -D HOME_DIR="$HOME" claude'
+alias se='sandbox-exec -f "$OneDrive/dotfiles/scripts/permissive-open.sb" -D TARGET_DIR="$(pwd)" -D HOME_DIR="$HOME"'
+alias tig='lazygit log'
+alias mr='mise run'
 
 # ----------------------
 # Git Aliases
 # ----------------------
 alias g='git'
 alias gb='git branch'
-# alias gb='git branch --sort=-committerdate --format="%(refname:short)%09%(committerdate:relative)%09%(color:green)%(contents:subject)%(color:yellow)(%(authorname))"'
-alias gbd='git branch -d '
+alias gbd='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)%09%09%09%(color:green)%(contents:subject)%(color:yellow)(%(authorname))"'
 function gbdm() {
     git branch --merged | grep -vE '^\*|master$|develop|main$' | xargs -I % git branch -d %
 }
-alias gbds='git branch -D `git branch | peco`'
-alias gc='git commit --no-verify '
-alias gca='git commit --no-verify --amend'
-alias gcan='git commit --no-verify --amend --no-edit'
-alias gcm='git commit --no-verify -m'
+function gbds() {
+  local default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's/refs\/remotes\/origin\/\([^\/]*\).*/\1/')
+  git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)%09%(contents:subject)" | \
+    grep -v "^[[:space:]]*[[:alnum:][:space:]]*${default_branch}[[:space:]]" | \
+    peco | \
+    awk -F'\t' '{print $2}' | \
+    xargs -I % git branch -D %
+}
+alias gc='git commit '
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
+alias gcm='git commit -m'
+alias gcmn='git commit -m'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 function gcom() {
     local default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's/refs\/remotes\/origin\/\([^\/]*\).*/\1/')
     git checkout $default_branch
+}
+function grbom() {
+    local default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's/refs\/remotes\/origin\/\([^\/]*\).*/\1/')
+    git rebase origin/$default_branch
 }
 alias gcod='git checkout develop'
 alias gcosb='git checkout `git branch | peco`'
@@ -137,8 +159,13 @@ gbdms() {
 # ----------------------
 alias hpw='gh pr view `git branch --show-current` --web'
 alias hst='gh pr status'
-alias hpr='gh pr create -w'
-alias hprk='gh pr create -a "@me" -r "knowledge-work/backend,knowledge-work/knowledge-dev-backend" -f'
+# alias hpr='gh pr create -a "@me" -w'
+function hpr(){
+  title=$(git log --pretty=format:"%h %s" $(git merge-base origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') HEAD)..HEAD | peco --select-1 | cut -d' ' -f2-)
+
+  gh pr create -a "@me" -t "$title" -w
+}
+
 alias hbr='gh repo view -w -b `git branch --show-current`'
 alias hrw='gh repo view --web'
 

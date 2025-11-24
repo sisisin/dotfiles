@@ -7,7 +7,7 @@ export PATH=$PATH:${HOME}/dev/aplscript/bin
 
 source ~/.env_vars.sh
 
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 
 test -r ~/.bashrc && . ~/.bashrc
 
