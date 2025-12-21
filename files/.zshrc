@@ -1,31 +1,57 @@
 # zmodload zsh/zprof
-
 zmodload zsh/datetime
 start_time=$(strftime '%s%.')
 
-function has() {
-    type "$1" >/dev/null 2>&1
-}
+# environment variables setup start ----------------------
+export OneDrive="$HOME/OneDrive - simenyan"
+export DOTFILES_PATH="${OneDrive}/dotfiles"
+export PGDATA=/usr/local/var/postgres
+export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3" # gcloud
+export EDITOR='code --wait'
+
+export PATH="$PATH:./node_modules/.bin"
+export PATH="$PATH:../node_modules/.bin"
+export PATH="$PATH:${HOME}/.local/bin"
+export PATH="$PATH:${DOTFILES_PATH}/bin"
+export PATH="$PATH:${HOME}/.duckdb/cli/latest" # duckdb
+[[ -f ~/.env_local.sh ]] && source ~/.env_local.sh
 
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"; fi
 
+# pnpm
+export PNPM_HOME="${HOME}/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# aqua
+if command -v aqua &> /dev/null; then
+    source <(aqua completion zsh)
+fi
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+# aqua end
+
+# PATH=aqua/bin:$PATHを評価したあとにmise activateを実行する必要がある
+# そうしないとhook-envによる環境変数差し込む処理がprojectのPATH差し込みがaquaよりあとになってしまう
 if [[ -f "$HOME/.local/bin/mise" ]]; then
   eval "$($HOME/.local/bin/mise activate zsh)"
 fi
-eval "$($HOME/.local/bin/mise activate zsh --shims)"
+
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+# environment variables setup end ----------------------
 
 
-source ~/.env_vars.sh
-
-[[ -f ~/.env_local.sh ]] && source ~/.env_local.sh
-
+source "$OneDrive/dotfiles/scripts/shelllib.sh"
 source "$OneDrive/dotfiles/scripts/zshlib.sh"
 
 # background image changer
-source "$OneDrive/dotfiles/scripts/bg/bg.sh"
 configure_image_lists
 set_current_image
 
@@ -140,22 +166,8 @@ bindkey '^R' peco-select-history
 # ----------------------
 # common configuration
 # ----------------------
-
-# https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-completion.html
-# export PATH="$PATH:/usr/local/bin/aws_completer"
 autoload bashcompinit && bashcompinit
 
-# kubectl completion
-function _kubectl() {
-    unfunction $0
-    source <(kubectl completion zsh)
-    source <(kubectl argo rollouts completion zsh)
-    $0
-}
-
-compdef _kubectl kubectl
-alias k=kubectl
-complete -F __start_kubectl k
 
 # ---------
 
@@ -165,23 +177,3 @@ echo $((end_time - start_time))
 if type zprof >/dev/null 2>&1; then
     zprof | less
 fi
-
-if command -v aqua &> /dev/null; then
-    source <(aqua completion zsh)
-fi
-
-
-# aqua
-export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-
-if command -v direnv &> /dev/null; then
-  eval "$(direnv hook zsh)"
-fi
-
-# pnpm
-export PNPM_HOME="/Users/sisisin/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

@@ -1,3 +1,5 @@
+source "$OneDrive/dotfiles/scripts/bg/bg.sh"
+
 function peco_src() {
     local repo=$(ghq list | peco --query "$LBUFFER")
     if [ -n "$repo" ]; then
@@ -15,3 +17,4 @@ function peco-select-history() {
     CURSOR=$#BUFFER # カーソルを文末に移動
     zle -R -c       # refresh
 }
+

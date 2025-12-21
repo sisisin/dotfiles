@@ -12,3 +12,5 @@ source "$script_dir/_lib.sh"
 deploy_files
 deploy_ssh_configs
 
+# aqua installed bin
+aqua install --only-link --all

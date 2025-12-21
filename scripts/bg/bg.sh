@@ -35,7 +35,6 @@ function u() {
 
 function set_current_image() {
     local image_path=$(cat $OneDrive/dotfiles/scripts/bg/.current_image)
-    echo $image_path
     (osascript -l JavaScript $OneDrive/dotfiles/scripts/bg/set_bg_image.jxa "$image_path" &)
 }
 

@@ -24,19 +24,6 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# echo "Installing brew-file"
-# brew install rcmdnk/file/brew-file
-# echo "$(tput setaf 2) installed Homebrew ✔︎$(tput sgr0)"
-# echo "do 'brew file init.'"
-
-# need to install java for sbt, maven, or others...
-# brew tap AdoptOpenJDK/openjdk
-# brew install adoptopenjdk8 --cask
-
-# export HOMEBREW_BREWFILE="$DOT_DIRECTORY/files/.config/brewfile/Brewfile"
-# brew file install
-# echo $(tput setaf 2)BrewFiles install complete!. ✔︎$(tput sgr0)
-
 # aqua
 if has "aqua"; then
     echo "$(tput setaf 2)Already installed aqua ✔︎$(tput sgr0)"

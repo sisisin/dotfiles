@@ -1,5 +1,10 @@
 (version 1)
 
+;; 参考: https://zenn.dev/todesking/articles/claude-code-with-sandbox-exec
+;; ↓で権限のデバッグが出来ます
+;; sudo log stream --predicate 'sender == "Sandbox"' | grep deny
+;; sandbox-exec -f "./tools/claudecode/sandbox.sb" -D TARGET_DIR="$(pwd)" -D HOME_DIR="$HOME" [debug command]
+
 (debug deny)
 
 (allow default)
@@ -28,22 +33,17 @@
     ;; 一時ファイル関連
     (subpath "/tmp")
     (subpath "/var/folders")
+    (subpath "/private/tmp")
     (subpath "/private/var/folders")
     (subpath (string-append (param "HOME_DIR") "/.cache"))
     (subpath (string-append (param "HOME_DIR") "/Library/Caches"))
 
     ;; その他のツール関連。ご利用のツールに合わせて調整してください
-    (subpath (string-append (param "HOME_DIR") "/.npm"))
-
-    ;; gcloud
-    (subpath (string-append (param "HOME_DIR") "/.config/gcloud"))
-
-    ;; terraform
-    (subpath (string-append (param "HOME_DIR") "/.terraform.d"))
-    (subpath (string-append (param "HOME_DIR") "/.terraformrc"))
-
-    ;; dbt
-    (subpath (string-append (param "HOME_DIR") "/.dbt-osmosis/logs"))
+    (subpath (string-append (param "HOME_DIR") "/.config/gcloud")) ;; gcloud
+    (subpath (string-append (param "HOME_DIR") "/.dbt-osmosis/logs")) ;; dbt
+    (subpath (string-append (param "HOME_DIR") "/.npm")) ;; npm
+    (subpath (string-append (param "HOME_DIR") "/.terraform.d")) ;; terraform
+    (subpath (string-append (param "HOME_DIR") "/.terraformrc")) ;; terraform
 
     ;; STDOUTとか
     (literal "/dev/stdout")

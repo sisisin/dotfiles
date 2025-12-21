@@ -19,6 +19,14 @@ function deploy_files() {
       ln -snfv "${DOT_FILES_DIRECTORY}/${f}" "${HOME}/${f}"
   done
 
+  find "${HOME}" -maxdepth 1 -type l | while read link; do
+      target=$(readlink "$link")
+      if [[ ! -e $target ]]; then
+          echo "Removing broken symlink: $link -> $target"
+          rm "$link"
+      fi
+  done
+
   echo "$(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)"
 }
 

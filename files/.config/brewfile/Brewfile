@@ -1,7 +1,0 @@
-
-# tap repositories and their packages
-
-tap homebrew/core
-
-# Main file
-main Brewfile.darwin.arm64
